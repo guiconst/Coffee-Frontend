@@ -1,0 +1,397 @@
+﻿<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Detalhes do Produto - Constantino Coffee</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap"
+        rel="stylesheet" />
+        <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#775842",
+                        "on-primary-fixed": "#2c1606",
+                        "inverse-on-surface": "#f4f0eb",
+                        "secondary": "#7a5733",
+                        "tertiary-container": "#6f5f46",
+                        "surface-container-low": "#f7f3ee",
+                        "primary-fixed": "#ffdcc5",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#fdf9f4",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#53452e",
+                        "on-surface": "#1c1c19",
+                        "secondary-fixed": "#ffdcbc",
+                        "on-surface-variant": "#50453e",
+                        "inverse-primary": "#e8bea3",
+                        "on-error-container": "#93000a",
+                        "primary": "#61442f",
+                        "on-tertiary-fixed": "#251a07",
+                        "surface-container-highest": "#e6e2dd",
+                        "on-primary-fixed-variant": "#5d402c",
+                        "tertiary": "#564730",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#f0dabb",
+                        "outline": "#82756d",
+                        "on-background": "#1c1c19",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#d9c4a5",
+                        "outline-variant": "#d3c3ba",
+                        "surface-container": "#f1ede8",
+                        "surface-container-high": "#ebe8e3",
+                        "surface": "#fdf9f4",
+                        "tertiary-fixed": "#f6dfc0",
+                        "background": "#fdf9f4",
+                        "secondary-container": "#fdcfa1",
+                        "primary-fixed-dim": "#e8bea3",
+                        "secondary-fixed-dim": "#ebbe92",
+                        "surface-variant": "#e6e2dd",
+                        "on-secondary-fixed": "#2c1600",
+                        "primary-container": "#7b5b45",
+                        "on-secondary-fixed-variant": "#5f401e",
+                        "on-primary-container": "#ffd6bc",
+                        "inverse-surface": "#31302d",
+                        "on-secondary-container": "#795632",
+                        "surface-dim": "#ddd9d5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "md": "24px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "xl": "80px",
+                        "lg": "48px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "display": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "display": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background text-on-background antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col pt-[80px]">
+    <!-- TopNavBar -->
+    <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-sm border-b border-surface-variant transition-all duration-300">
+        <div class="flex justify-between items-center max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop h-20">
+            <!-- Brand -->
+            <a class="font-display text-headline-md text-primary shrink-0 hover:opacity-80 transition-opacity duration-300" href="index.html">Constantino</a>
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-gutter">
+                <a class="font-label-md text-label-md tracking-wide hover:text-primary transition-colors text-on-surface-variant" href="index.html">Início</a>
+                <a class="font-label-md text-label-md tracking-wide hover:text-primary transition-colors text-on-surface-variant" href="cardapio.html">Cardápio</a>
+                <a class="font-label-md text-label-md tracking-wide hover:text-primary transition-colors text-on-surface-variant" href="promocao.html">Promoções</a>
+                <a class="font-label-md text-label-md tracking-wide hover:text-primary transition-colors text-on-surface-variant" href="sobre.html">Sobre</a>
+                <a class="font-label-md text-label-md tracking-wide hover:text-primary transition-colors text-on-surface-variant" href="contato.html">Contato</a>
+            </nav>
+            <!-- Trailing Action (Desktop) -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="login.html" class="text-primary hover:opacity-80 transition-opacity" aria-label="Login">
+                    <span class="material-symbols-outlined text-2xl">person</span>
+                </a>
+                <a href="carrinho.html" class="relative text-primary hover:opacity-80 transition-opacity" aria-label="Carrinho">
+                    <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                    <span id="cart-badge" class="absolute -top-2 -right-2 bg-error text-on-error text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+                </a>
+                <a href="cardapio.html" class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2 rounded-full hover:opacity-80 transition-opacity duration-300 shadow-sm active:scale-95">
+                    Peça Agora
+                </a>
+            </div>
+            <!-- Mobile Menu Toggle (Mobile) -->
+            <div class="md:hidden flex items-center gap-4">
+                <a href="carrinho.html" class="relative text-primary" aria-label="Carrinho">
+                    <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                    <span id="mobile-cart-badge" class="absolute -top-2 -right-2 bg-error text-on-error text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+                </a>
+                <button id="mobile-menu-btn" class="text-primary p-2 focus:outline-none" aria-label="Menu" aria-expanded="false">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-surface border-b border-surface-variant absolute w-full top-20 shadow-md">
+            <nav class="flex flex-col px-margin-mobile py-4 space-y-4">
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="index.html">Início</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="cardapio.html">Cardápio</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="promocao.html">Promoções</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="sobre.html">Sobre</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="contato.html">Contato</a>
+                <div class="h-px w-full bg-outline-variant/50 my-2"></div>
+                <a class="font-label-md text-label-md text-primary flex items-center gap-2" href="login.html">
+                    <span class="material-symbols-outlined text-xl">person</span> Entrar / Cadastrar
+                </a>
+            </nav>
+        </div>
+    </header>
+    <!-- Main Content Canvas -->
+    <main class="flex-grow w-full max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+        <!-- Breadcrumb / Back Navigation -->
+        <div class="mb-lg">
+            <a class="inline-flex items-center text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md group"
+                href="cardapio.html">
+                <span class="material-symbols-outlined mr-xs text-sm group-hover:-translate-x-1 transition-transform"
+                    data-icon="arrow_back">arrow_back</span>
+                Voltar ao Cardápio
+            </a>
+        </div>
+        <!-- Product Hero Section (Bento/Asymmetric Layout) -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter lg:gap-xl">
+            <!-- Product Image Column (Left) -->
+            <div class="md:col-span-6 lg:col-span-7 flex flex-col gap-gutter">
+                <div
+                    class="w-full aspect-[4/5] md:aspect-square bg-surface-container rounded-xl overflow-hidden relative shadow-2xl shadow-primary/10">
+                    <img class="object-cover w-full h-full"
+                        data-alt="A beautifully crafted artisanal cappuccino in a rustic ceramic mug, resting on a wooden saucer. The coffee features intricate latte art on top, perhaps a fern or heart shape, rendered in pristine white microfoam against rich, dark espresso crema. Shot in a warm, inviting cafe setting with soft, natural morning light filtering through a window, creating a serene and premium 'Modern Artisanal' aesthetic. Earthy tones of beige, cream, and deep brown dominate the scene."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHIKT01gwReoGou3OSftRa4kvoPPSGFYVzgG9S2re2bjvl7Qq364yCqzys8Gvsg0ZtDu1Y8j9RqKFKiasu2A_6KNCHl5LJvfhMaGsckphILDhVn4FG06WEGuTd5CSOVM0a7dDYmCrpCcxtYnxgoXCPk71pSrd5uehd0kUA8aj28TAWX1oge6mK91YaOlomdhyi5NBlNnPDxswXAuNheWIlfdNcwADz5FFQwjfGf-S1qdA05EyrFTYzpqHIcJv4NcNxQHpWJ5smP6Xr" />
+                    <!-- Decorative Floating Badges -->
+                    <div class="absolute top-md left-md flex gap-sm flex-wrap">
+                        <span
+                            class="bg-tertiary text-on-tertiary font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-wider">Mais
+                            Vendido</span>
+                        <span
+                            class="bg-surface/80 backdrop-blur-sm text-primary font-label-sm text-label-sm px-3 py-1 rounded-full border border-outline-variant">Quente</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Product Details Column (Right) -->
+            <div class="md:col-span-6 lg:col-span-5 flex flex-col">
+                <div class="mb-lg">
+                    <h1
+                        class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-sm">
+                        Cappuccino Artesanal</h1>
+                    <p class="font-headline-md text-headline-md text-secondary mb-md">R$ 18,90</p>
+                    <p class="font-body-md text-body-md text-on-surface-variant">
+                        Nossa clássica receita italiana, preparada com um espresso duplo extraído de grãos 100% Arábica
+                        selecionados, harmonizado com leite vaporizado sedoso e uma espessa camada de microespuma. A
+                        essência do conforto em uma xícara.
+                    </p>
+                </div>
+                <div class="w-full h-[1px] bg-outline-variant/30 mb-lg"></div>
+                <!-- Customization Options -->
+                <form class="flex flex-col gap-lg flex-grow">
+                    <!-- Size Selection -->
+                    <div>
+                        <h3 class="font-label-md text-label-md text-on-surface mb-sm uppercase tracking-wider">Tamanho
+                        </h3>
+                        <div class="flex gap-sm">
+                            <label class="cursor-pointer flex-1">
+                                <input checked="" class="peer sr-only" name="size" type="radio" value="regular" />
+                                <div
+                                    class="w-full text-center py-3 px-4 rounded-lg border border-outline-variant peer-checked:border-primary peer-checked:bg-primary-container/10 text-on-surface-variant peer-checked:text-primary transition-all font-body-md text-body-md bg-surface hover:bg-surface-container-low">
+                                    Regular (240ml)
+                                </div>
+                            </label>
+                            <label class="cursor-pointer flex-1">
+                                <input class="peer sr-only" name="size" type="radio" value="grande" />
+                                <div
+                                    class="w-full text-center py-3 px-4 rounded-lg border border-outline-variant peer-checked:border-primary peer-checked:bg-primary-container/10 text-on-surface-variant peer-checked:text-primary transition-all font-body-md text-body-md bg-surface hover:bg-surface-container-low">
+                                    Grande (350ml)<br /><span class="text-sm opacity-70">+ R$ 4,00</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Milk Type Selection -->
+                    <div>
+                        <h3 class="font-label-md text-label-md text-on-surface mb-sm uppercase tracking-wider">Tipo de
+                            Leite</h3>
+                        <div class="grid grid-cols-2 gap-sm">
+                            <label class="cursor-pointer">
+                                <input checked="" class="peer sr-only" name="milk" type="radio" value="integral" />
+                                <div
+                                    class="w-full py-2 px-3 rounded-lg border border-outline-variant peer-checked:border-primary peer-checked:bg-primary-container/10 text-on-surface-variant peer-checked:text-primary transition-all font-body-md text-body-md bg-surface">
+                                    Integral
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input class="peer sr-only" name="milk" type="radio" value="desnatado" />
+                                <div
+                                    class="w-full py-2 px-3 rounded-lg border border-outline-variant peer-checked:border-primary peer-checked:bg-primary-container/10 text-on-surface-variant peer-checked:text-primary transition-all font-body-md text-body-md bg-surface">
+                                    Desnatado
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input class="peer sr-only" name="milk" type="radio" value="aveia" />
+                                <div
+                                    class="w-full py-2 px-3 rounded-lg border border-outline-variant peer-checked:border-primary peer-checked:bg-primary-container/10 text-on-surface-variant peer-checked:text-primary transition-all font-body-md text-body-md bg-surface flex justify-between items-center">
+                                    <span>Aveia</span>
+                                    <span class="text-sm opacity-70">+ R$ 3,00</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input class="peer sr-only" name="milk" type="radio" value="amendoa" />
+                                <div
+                                    class="w-full py-2 px-3 rounded-lg border border-outline-variant peer-checked:border-primary peer-checked:bg-primary-container/10 text-on-surface-variant peer-checked:text-primary transition-all font-body-md text-body-md bg-surface flex justify-between items-center">
+                                    <span>Amêndoa</span>
+                                    <span class="text-sm opacity-70">+ R$ 3,50</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Extras (Checkboxes) -->
+                    <div>
+                        <h3 class="font-label-md text-label-md text-on-surface mb-sm uppercase tracking-wider">Extras
+                        </h3>
+                        <div class="flex flex-col gap-xs">
+                            <label
+                                class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer border border-transparent hover:border-outline-variant/30">
+                                <div class="flex items-center gap-sm">
+                                    <input
+                                        class="form-checkbox text-primary focus:ring-primary rounded text-lg border-outline-variant bg-surface"
+                                        type="checkbox" />
+                                    <span class="font-body-md text-body-md text-on-surface">Canela em Pó</span>
+                                </div>
+                                <span class="font-body-md text-body-md text-on-surface-variant">Grátis</span>
+                            </label>
+                            <label
+                                class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer border border-transparent hover:border-outline-variant/30">
+                                <div class="flex items-center gap-sm">
+                                    <input
+                                        class="form-checkbox text-primary focus:ring-primary rounded text-lg border-outline-variant bg-surface"
+                                        type="checkbox" />
+                                    <span class="font-body-md text-body-md text-on-surface">Shot Extra de
+                                        Espresso</span>
+                                </div>
+                                <span class="font-body-md text-body-md text-on-surface-variant">+ R$ 4,50</span>
+                            </label>
+                            <label
+                                class="flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer border border-transparent hover:border-outline-variant/30">
+                                <div class="flex items-center gap-sm">
+                                    <input
+                                        class="form-checkbox text-primary focus:ring-primary rounded text-lg border-outline-variant bg-surface"
+                                        type="checkbox" />
+                                    <span class="font-body-md text-body-md text-on-surface">Xarope de Baunilha</span>
+                                </div>
+                                <span class="font-body-md text-body-md text-on-surface-variant">+ R$ 2,50</span>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Sticky Bottom CTA Area for Mobile / Flow for Desktop -->
+                    <div
+                        class="mt-auto pt-lg border-t border-outline-variant/30 sticky bottom-0 bg-background/95 backdrop-blur-sm md:static md:bg-transparent md:border-t-0 md:pt-0 z-10 pb-margin-mobile md:pb-0 -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0">
+                        <div class="flex items-center justify-between mb-md hidden md:flex">
+                            <span class="font-headline-md text-headline-md text-on-surface">Total</span>
+                            <span class="font-headline-md text-headline-md text-primary">R$ 18,90</span>
+                        </div>
+                        <button
+                            class="w-full bg-primary text-on-primary font-headline-md text-headline-md py-4 rounded-xl flex items-center justify-center gap-sm hover:bg-primary/90 hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-primary/20"
+                            type="button">
+                            <span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+                            Adicionar ao Pedido <span class="md:hidden ml-2">- R$ 18,90</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Cross-sell / Pairing Suggestion -->
+        <div class="mt-xl pt-xl border-t border-outline-variant/30">
+            <h2 class="font-headline-md text-headline-md text-primary mb-lg text-center md:text-left">Perfeito com...
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+                <!-- Pairing Card -->
+                <div
+                    class="bg-surface-container rounded-xl p-md flex gap-md items-center group cursor-pointer hover:bg-surface-container-high transition-colors shadow-md shadow-primary/5">
+                    <div class="w-24 h-24 rounded-lg overflow-hidden shrink-0 bg-surface">
+                        <img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                            data-alt="A close-up, high-quality image of a freshly baked, chunky chocolate chip cookie resting on a rustic linen napkin. The cookie has large, melting pools of dark chocolate and sprinkled sea salt on top, conveying a warm, artisanal bakery feel. The lighting is soft and natural, emphasizing the texture of the cookie against a warm beige background, fitting the 'Modern Artisanal' aesthetic of the cafe."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvlHmQ1zBHTwfKlgHtp59BfbvM2ThOyRZIjurgwwEs2EIYNOXYF23DP6JronuFcpIhZv0u99nvAss4Hwf_7ai5yvwsbK-3efcP6ceDim8obPdifarRX81YTxgCKDwgKSfxC6JEyT3nc6IyPKC2NvoSiU2TLE6XNZszq_di4BJLijqN66VHiiHOmlmUh-8skxJVRK5MOAlKxUFV8nmphJRZVGJx_up9M4zaAbdAyd-qZltHdW_VdR-AZ3PMZ-yUd6hx0wTpV0JYhgA2" />
+                    </div>
+                    <div class="flex flex-col flex-grow">
+                        <h4 class="font-label-md text-label-md text-on-surface font-bold">Cookie de Chocolate com Flor
+                            de Sal</h4>
+                        <p class="font-label-sm text-label-sm text-on-surface-variant mt-1 mb-2 line-clamp-2">Crocante
+                            por fora, macio por dentro.</p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <span class="font-label-md text-label-md text-primary">+ R$ 12,00</span>
+                            <button
+                                class="w-8 h-8 rounded-full border border-primary text-primary flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors">
+                                <span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full py-lg mt-xl bg-surface-container dark:bg-surface-container-highest">
+        <div
+            class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="col-span-1 md:col-span-4 mb-md">
+                <span class="font-display text-headline-md text-primary">Constantino Coffee</span>
+            </div>
+            <div class="flex flex-col gap-sm">
+                <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md focus:underline decoration-2 decoration-primary"
+                    href="#">Horário: Seg-Sex 08h-20h</a>
+            </div>
+            <div class="flex flex-col gap-sm">
+                <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md focus:underline decoration-2 decoration-primary"
+                    href="#">Endereço: Rua das Amêndoas, 123</a>
+            </div>
+            <div class="flex flex-col gap-sm">
+                <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md focus:underline decoration-2 decoration-primary"
+                    href="#">Instagram</a>
+                <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md focus:underline decoration-2 decoration-primary"
+                    href="#">Facebook</a>
+            </div>
+            <div class="flex flex-col gap-sm">
+                <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md focus:underline decoration-2 decoration-primary"
+                    href="#">Privacidade</a>
+            </div>
+            <div class="col-span-1 md:col-span-4 mt-lg pt-md border-t border-outline-variant/30 text-center">
+                <p class="font-body-md text-body-md text-on-surface-variant">© 2024 Constantino Coffee. Todos os
+                    direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="main.js" defer></script>
+</body>
+
+</html>

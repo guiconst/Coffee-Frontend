@@ -1,0 +1,549 @@
+﻿<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Cardápio - Constantino Coffee</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+        <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#775842",
+                        "on-primary-fixed": "#2c1606",
+                        "inverse-on-surface": "#f4f0eb",
+                        "secondary": "#7a5733",
+                        "tertiary-container": "#6f5f46",
+                        "surface-container-low": "#f7f3ee",
+                        "primary-fixed": "#ffdcc5",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#fdf9f4",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#53452e",
+                        "on-surface": "#1c1c19",
+                        "secondary-fixed": "#ffdcbc",
+                        "on-surface-variant": "#50453e",
+                        "inverse-primary": "#e8bea3",
+                        "on-error-container": "#93000a",
+                        "primary": "#61442f",
+                        "on-tertiary-fixed": "#251a07",
+                        "surface-container-highest": "#e6e2dd",
+                        "on-primary-fixed-variant": "#5d402c",
+                        "tertiary": "#564730",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#f0dabb",
+                        "outline": "#82756d",
+                        "on-background": "#1c1c19",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#d9c4a5",
+                        "outline-variant": "#d3c3ba",
+                        "surface-container": "#f1ede8",
+                        "surface-container-high": "#ebe8e3",
+                        "surface": "#fdf9f4",
+                        "tertiary-fixed": "#f6dfc0",
+                        "background": "#fdf9f4",
+                        "secondary-container": "#fdcfa1",
+                        "primary-fixed-dim": "#e8bea3",
+                        "secondary-fixed-dim": "#ebbe92",
+                        "surface-variant": "#e6e2dd",
+                        "on-secondary-fixed": "#2c1600",
+                        "primary-container": "#7b5b45",
+                        "on-secondary-fixed-variant": "#5f401e",
+                        "on-primary-container": "#ffd6bc",
+                        "inverse-surface": "#31302d",
+                        "on-secondary-container": "#795632",
+                        "surface-dim": "#ddd9d5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "md": "24px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "xl": "80px",
+                        "lg": "48px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "display": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "display": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body
+    class="bg-background text-on-background antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col [&amp;_.material-symbols-outlined]:[font-variation-settings:'FILL'_0,'wght'_400,'GRAD'_0,'opsz'_24]">
+    <!-- TopNavBar -->
+    <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-sm border-b border-surface-variant transition-all duration-300">
+        <div class="flex justify-between items-center max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop h-20">
+            <!-- Brand -->
+            <a class="font-display text-headline-md text-primary shrink-0 hover:opacity-80 transition-opacity duration-300" href="index.html">Constantino</a>
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-gutter">
+                <a class="font-label-md text-label-md tracking-wide hover:text-primary transition-colors text-on-surface-variant" href="index.html">Início</a>
+                <a class="font-label-md text-label-md tracking-wide hover:text-primary transition-colors text-on-surface-variant" href="cardapio.html">Cardápio</a>
+                <a class="font-label-md text-label-md tracking-wide hover:text-primary transition-colors text-on-surface-variant" href="promocao.html">Promoções</a>
+                <a class="font-label-md text-label-md tracking-wide hover:text-primary transition-colors text-on-surface-variant" href="sobre.html">Sobre</a>
+                <a class="font-label-md text-label-md tracking-wide hover:text-primary transition-colors text-on-surface-variant" href="contato.html">Contato</a>
+            </nav>
+            <!-- Trailing Action (Desktop) -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="login.html" class="text-primary hover:opacity-80 transition-opacity" aria-label="Login">
+                    <span class="material-symbols-outlined text-2xl">person</span>
+                </a>
+                <a href="carrinho.html" class="relative text-primary hover:opacity-80 transition-opacity" aria-label="Carrinho">
+                    <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                    <span id="cart-badge" class="absolute -top-2 -right-2 bg-error text-on-error text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+                </a>
+                <a href="cardapio.html" class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2 rounded-full hover:opacity-80 transition-opacity duration-300 shadow-sm active:scale-95">
+                    Peça Agora
+                </a>
+            </div>
+            <!-- Mobile Menu Toggle (Mobile) -->
+            <div class="md:hidden flex items-center gap-4">
+                <a href="carrinho.html" class="relative text-primary" aria-label="Carrinho">
+                    <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                    <span id="mobile-cart-badge" class="absolute -top-2 -right-2 bg-error text-on-error text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+                </a>
+                <button id="mobile-menu-btn" class="text-primary p-2 focus:outline-none" aria-label="Menu" aria-expanded="false">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-surface border-b border-surface-variant absolute w-full top-20 shadow-md">
+            <nav class="flex flex-col px-margin-mobile py-4 space-y-4">
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="index.html">Início</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="cardapio.html">Cardápio</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="promocao.html">Promoções</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="sobre.html">Sobre</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="contato.html">Contato</a>
+                <div class="h-px w-full bg-outline-variant/50 my-2"></div>
+                <a class="font-label-md text-label-md text-primary flex items-center gap-2" href="login.html">
+                    <span class="material-symbols-outlined text-xl">person</span> Entrar / Cadastrar
+                </a>
+            </nav>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="flex-grow pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-[1200px] mx-auto w-full">
+        <!-- Header -->
+        <header class="mb-16 text-center md:text-left">
+            <h1
+                class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-4">
+                Nosso Cardápio</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Descubra nossa seleção artesanal de
+                cafés especiais, bebidas geladas refrescantes e acompanhamentos preparados diariamente com ingredientes
+                selecionados.</p>
+        </header>
+        <!-- Filters -->
+        <div class="flex flex-wrap gap-4 mb-16 border-b border-surface-variant pb-6">
+            <button
+                class="px-6 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-[0_10px_30px_rgba(78,52,46,0.08)] transition-all">Todos</button>
+            <button
+                class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-all">Cafés
+                Quentes</button>
+            <button
+                class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-all">Cafés
+                Gelados</button>
+            <button
+                class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-all">Acompanhamentos</button>
+        </div>
+        <!-- Categorized Sections -->
+        <div class="space-y-24">
+            <!-- Cafés Quentes -->
+            <section class="relative">
+                <div class="flex justify-between items-end mb-8">
+                    <h2
+                        class="font-headline-md text-headline-md text-primary pb-2 border-b border-surface-variant inline-block mb-0">
+                        Cafés Quentes</h2>
+                    <div class="flex gap-2">
+                        <button
+                            class="w-10 h-10 rounded-full bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant transition-colors"><span
+                                class="material-symbols-outlined">chevron_left</span></button>
+                        <button
+                            class="w-10 h-10 rounded-full bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant transition-colors"><span
+                                class="material-symbols-outlined">chevron_right</span></button>
+                    </div>
+                </div>
+                <div
+                    class="flex overflow-x-auto gap-10 pb-4 snap-x snap-mandatory [&amp;::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                    <!-- Item 1 -->
+                    <div
+                        class="bg-surface rounded-xl flex flex-col group hover:-translate-y-1 transition-transform duration-300 relative h-full w-full sm:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.666rem)] shrink-0 snap-start">
+                        <div class="w-full h-64 rounded-xl overflow-hidden mb-6 shrink-0 shadow-sm">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="A top-down view of a beautifully poured latte in a ceramic mug resting on a rustic wooden table. The latte art features an intricate rosetta pattern. Soft, warm natural light spills across the scene, highlighting the rich brown crema and the delicate white foam. A few scattered roasted coffee beans add texture to the minimalist, artisanal composition."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1kFR1yavYVxj2mkfvgNmZcQcrZyWoVL8yjWzzsj1ZxU5i3Nmn3gqRaGU2QFkkua72P9brqMEi_gzsbtyRn2zw4xqogGj1GyX-G_wUIj5gFetS6jLOSGOwbmzL63eMUhI8r6FpYlAccPPESpJZlnHsBr4NUJdNgNIOBONraw58JViq6wz62Ra78qydVdY_OUmVEQ_Yqgfa5vBP2cthBBWDHGFfbNOIoRjBysFqTJli_TQcn0cr1a4HBnSxEve08CESGXksncjVOXJU" />
+                        </div>
+                        <div class="flex flex-col flex-grow px-2 pb-2">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="font-headline-md text-headline-md text-primary text-xl">Latte Clássico</h3>
+                                <span
+                                    class="font-label-md text-label-md text-secondary font-bold whitespace-nowrap ml-4">R$
+                                    14,00</span>
+                            </div>
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">Nosso espresso
+                                encorpado misturado com leite vaporizado sedoso e uma fina camada de espuma. Uma
+                                experiência reconfortante e suave.</p>
+                            <div class="flex gap-2 mb-6">
+                                <span
+                                    class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full font-label-sm text-label-sm">Equilibrado</span>
+                                <span
+                                    class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full font-label-sm text-label-sm">Doce</span>
+                            </div>
+                            <button
+                                class="w-full border border-primary text-primary px-4 py-3 rounded-full font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined text-[18px]">add</span> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div
+                        class="bg-surface rounded-xl flex flex-col group hover:-translate-y-1 transition-transform duration-300 relative h-full w-full sm:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.666rem)] shrink-0 snap-start">
+                        <div class="w-full h-64 rounded-xl overflow-hidden mb-6 shrink-0 shadow-sm">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="A small ceramic cup holding a rich, dark espresso shot. A thin, perfectly golden-brown layer of crema sits on top. The cup is placed on a matching saucer next to a tiny silver spoon. The setting is minimal, with soft, directional lighting that emphasizes the intense, concentrated nature of the coffee against a neutral, warm beige backdrop."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN6HnwL9jh8s4j5cMSziZ8_MuuqPQjoaxtM3Zaq-q8IhXcU-Wkzr0akUwSf0OxjLniMM8LBBVQOBWDTZ4tP4jX_sJ3KfZjJ-5xFvTgJbPhFmDgNKdTVlu7D4VUpphOXTf-qwccCYD8OK7ZiaQxwCyFzW1aZUoz94bE5mQ5jVx5t_hRcY9jmBAbCzUqVAsduu7g23XmpLWFnbEm49WOJE4JRfHhqbB_dkQfuMNVY6vmJEJVhVax5fbrzpwGy1zleDou7qLEbTrhECdz" />
+                        </div>
+                        <div class="flex flex-col flex-grow px-2 pb-2">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="font-headline-md text-headline-md text-primary text-xl">Espresso Duplo</h3>
+                                <span
+                                    class="font-label-md text-label-md text-secondary font-bold whitespace-nowrap ml-4">R$
+                                    8,00</span>
+                            </div>
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">A essência pura
+                                do nosso grão. Intenso, encorpado e com crema aveludada.</p>
+                            <button
+                                class="w-full border border-primary text-primary px-4 py-3 rounded-full font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2 mt-auto">
+                                <span class="material-symbols-outlined text-[18px]">add</span> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Mocha -->
+                    <div
+                        class="bg-surface rounded-xl flex flex-col group hover:-translate-y-1 transition-transform duration-300 relative h-full w-full sm:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.666rem)] shrink-0 snap-start">
+                        <div class="w-full h-64 rounded-xl overflow-hidden mb-6 shrink-0 shadow-sm">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="A cup of Mocha coffee with chocolate swirls and whipped cream on a light wooden table, warm lighting, professional food photography, minimalist style, constantino coffee brand aesthetic."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvHSU-h_ngojGJ4QaLw4xuUxr6zW4JKRnexKBWlxK9hw9UD9RbpisgV0e1MhTp1DdlCVHAakk4FYnt0hyZ6j3LeOo45QcN9hOZ80suSKXiL3NNU6UsdF0y1w9DeOrVm58cfS2EPf5Cqx8SoIoo9A_z_jhfMnq-aBSRTtUSYhAYXWPUhHPMkDuni1OcJjxBR9bcauSGshO3iV0-7_by-_p6JepTuCB7HloG9YoN0YBPhJ3BLkYpgtK0ZlAqEQOlsRugG8dq_bBBjdfY" />
+                        </div>
+                        <div class="flex flex-col flex-grow px-2 pb-2">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="font-headline-md text-headline-md text-primary text-xl">Mocha</h3>
+                                <span
+                                    class="font-label-md text-label-md text-secondary font-bold whitespace-nowrap ml-4">R$
+                                    16,00</span>
+                            </div>
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">Espresso com
+                                calda de chocolate e leite vaporizado, finalizado com chantilly.</p>
+                            <button
+                                class="w-full border border-primary text-primary px-4 py-3 rounded-full font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2 mt-auto">
+                                <span class="material-symbols-outlined text-[18px]">add</span> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Flat White -->
+                    <div
+                        class="bg-surface rounded-xl flex flex-col group hover:-translate-y-1 transition-transform duration-300 relative h-full w-full sm:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.666rem)] shrink-0 snap-start">
+                        <div class="w-full h-64 rounded-xl overflow-hidden mb-6 shrink-0 shadow-sm">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="A Flat White coffee in a ceramic cup with beautiful latte art, soft morning light, minimalist cafe setting, warm tones, high quality photography."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEwwvCuG253FyUPszDOL97hWXZkjV0GA9n9peI1h_XVyngnbWgd9P-FAlYWc6dZ8uZ0eOZmAJwx2SHgPqKFQJ_RM3LXcF6I2u2X8YKyOBgeESJ4tQQlGM9vI8mFPgdcsiNnwuhvj0mal6QKxp3XtoIa7f-osJYIB-INdWiK8yw1MIVjLfYIdUCHyUn8-irTNLnDMEsJ9NaZ3dXw3iybrD0DM8eB9KgBzeVHu9xVvTBLVe-_7QNWQgVDEf5_2RQFwMaS6M2a47rVw0b" />
+                        </div>
+                        <div class="flex flex-col flex-grow px-2 pb-2">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="font-headline-md text-headline-md text-primary text-xl">Flat White</h3>
+                                <span
+                                    class="font-label-md text-label-md text-secondary font-bold whitespace-nowrap ml-4">R$
+                                    14,00</span>
+                            </div>
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">Espresso duplo
+                                com uma camada fina de leite vaporizado. Mais café, menos leite.</p>
+                            <button
+                                class="w-full border border-primary text-primary px-4 py-3 rounded-full font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2 mt-auto">
+                                <span class="material-symbols-outlined text-[18px]">add</span> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Cafés Gelados -->
+            <section class="relative">
+                <div class="flex justify-between items-end mb-8">
+                    <h2
+                        class="font-headline-md text-headline-md text-primary pb-2 border-b border-surface-variant inline-block mb-0">
+                        Cafés Gelados</h2>
+                    <div class="flex gap-2">
+                        <button
+                            class="w-10 h-10 rounded-full bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant transition-colors"><span
+                                class="material-symbols-outlined">chevron_left</span></button>
+                        <button
+                            class="w-10 h-10 rounded-full bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant transition-colors"><span
+                                class="material-symbols-outlined">chevron_right</span></button>
+                    </div>
+                </div>
+                <div
+                    class="flex overflow-x-auto gap-10 pb-4 snap-x snap-mandatory [&amp;::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                    <!-- Item 2 -->
+                    <div
+                        class="bg-surface rounded-xl flex flex-col group hover:-translate-y-1 transition-transform duration-300 relative h-full w-full sm:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.666rem)] shrink-0 snap-start">
+                        <div class="w-full h-64 rounded-xl overflow-hidden mb-6 shrink-0 shadow-sm">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="A close-up shot of an iced americano in a clear glass, brimming with ice cubes and condensation. The dark espresso gently mixes with the cold water, creating beautiful amber swirls. The background is slightly blurred, showing hints of a bright, modern cafe interior with natural sunlight pouring in, emphasizing a refreshing, cool aesthetic."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDevP5BRySPlncUJzvEjD9MgxT_JtUDvmPT4eHTPLZE6KBCOSOMaLta8oVg4-J4D5ynlI7vPs5Wf-Ra-UM1WmDpLnoskJvpXdEG4kQC7k0x-B-qnSSesEiU2mfHqGQUpYPcBP0flMYSY5GbJUkGvgZpphfnNJea4LIdnGZADypeHuUL1Ay46916DPZ2-sPXFs1MR7TaZK69i6uCdRoNrnQEKEoyh5_HtbW5w07z1ZTPW__lSOljdYMS1QJxiLR9I02kPBsak4ieriMB" />
+                        </div>
+                        <div class="flex flex-col flex-grow px-2 pb-2">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="font-headline-md text-headline-md text-primary text-xl">Americano Gelado</h3>
+                                <span
+                                    class="font-label-md text-label-md text-secondary font-bold whitespace-nowrap ml-4">R$
+                                    12,00</span>
+                            </div>
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">Espresso duplo
+                                diluído em água gelada. Refrescante e intenso, perfeito para dias quentes.</p>
+                            <button
+                                class="w-full border border-primary text-primary px-4 py-3 rounded-full font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2 mt-auto">
+                                <span class="material-symbols-outlined text-[18px]">add</span> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Caramel Macchiato Gelado -->
+                    <div
+                        class="bg-surface rounded-xl flex flex-col group hover:-translate-y-1 transition-transform duration-300 relative h-full w-full sm:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.666rem)] shrink-0 snap-start">
+                        <div class="w-full h-64 rounded-xl overflow-hidden mb-6 shrink-0 shadow-sm">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="A tall glass of Caramel Macchiato with layers of milk and coffee, caramel drizzle, ice cubes, refreshing look, wooden background, professional photography."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIjuJNdIFGa5XOUn83IlPJ-ablMj_GHmJLOlirCfYCvG2jkDuVobqUGeITzeYqerWaMnn4b4JuzHSgTOwribeapSta50rfQ9NuHyeTqEaShlaqGCIa8Q7RSm-MJSQWYY7R72zeWGZpI5dm-1DwY3BC6cuAiw7LMHXS0bqZUcV52vV3ISi6HhQ2iuydlOmFYF2MhErkD-lNap6F7RNY62VfonPnUXFKK6fnfad0aEt_m92NaWL3kpfnMMEcTnedySFgMkf_iUmtOLoi" />
+                        </div>
+                        <div class="flex flex-col flex-grow px-2 pb-2">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="font-headline-md text-headline-md text-primary text-xl">Caramel Macchiato
+                                    Gelado</h3>
+                                <span
+                                    class="font-label-md text-label-md text-secondary font-bold whitespace-nowrap ml-4">R$
+                                    18,00</span>
+                            </div>
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">Leite gelado,
+                                espresso e um toque de baunilha, finalizado com calda de caramelo.</p>
+                            <button
+                                class="w-full border border-primary text-primary px-4 py-3 rounded-full font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2 mt-auto">
+                                <span class="material-symbols-outlined text-[18px]">add</span> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Cold Brew -->
+                    <div
+                        class="bg-surface rounded-xl flex flex-col group hover:-translate-y-1 transition-transform duration-300 relative h-full w-full sm:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.666rem)] shrink-0 snap-start">
+                        <div class="w-full h-64 rounded-xl overflow-hidden mb-6 shrink-0 shadow-sm">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="A refreshing Cold Brew coffee in a glass bottle with a glass of ice next to it, minimalist aesthetic, warm wood tones, high quality food photography."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBxdjEkA5_fcVcnbnUjSHZ-tV8C31-RIKOCXzbCOnyrE1gMYJ_LB7Z2YThq9Rnrzc9aDKA0IKfpGvQPOtXvJpMDgv8aZ2kDwBGW_iOjmvALW8uBuYGoY81cMb9u1LUmWTMV2Q1F0Tl2QDc7-eyBk4XLH4sYvAKSnsuM00o7R0U-0ad35MOkxbNPIZwBdtf4EAygVvXk_U1RfIqpubUFHxdQ6RTzUqbzbxSw-XObD64_bIwDfSw8ZkHBtjnp2MpCWewkYI3CZyBTMJ6" />
+                        </div>
+                        <div class="flex flex-col flex-grow px-2 pb-2">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="font-headline-md text-headline-md text-primary text-xl">Cold Brew</h3>
+                                <span
+                                    class="font-label-md text-label-md text-secondary font-bold whitespace-nowrap ml-4">R$
+                                    14,00</span>
+                            </div>
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">Café extraído a
+                                frio por 18 horas, resultando em uma bebida suave e refrescante.</p>
+                            <button
+                                class="w-full border border-primary text-primary px-4 py-3 rounded-full font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2 mt-auto">
+                                <span class="material-symbols-outlined text-[18px]">add</span> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Acompanhamentos -->
+            <section class="relative">
+                <div class="flex justify-between items-end mb-8">
+                    <h2
+                        class="font-headline-md text-headline-md text-primary pb-2 border-b border-surface-variant inline-block mb-0">
+                        Acompanhamentos</h2>
+                    <div class="flex gap-2">
+                        <button
+                            class="w-10 h-10 rounded-full bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant transition-colors"><span
+                                class="material-symbols-outlined">chevron_left</span></button>
+                        <button
+                            class="w-10 h-10 rounded-full bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant transition-colors"><span
+                                class="material-symbols-outlined">chevron_right</span></button>
+                    </div>
+                </div>
+                <div
+                    class="flex overflow-x-auto gap-10 pb-4 snap-x snap-mandatory [&amp;::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                    <!-- Item 3 -->
+                    <div
+                        class="bg-surface rounded-xl flex flex-col group hover:-translate-y-1 transition-transform duration-300 relative h-full w-full sm:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.666rem)] shrink-0 snap-start">
+                        <div class="w-full h-64 rounded-xl overflow-hidden mb-6 shrink-0 shadow-sm">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="A thick, freshly baked chocolate chip cookie resting on a small, matte ceramic plate. The cookie is broken slightly in half, revealing gooey, melted chocolate chips inside. The lighting is warm and inviting, casting soft shadows that highlight the crumbly texture of the cookie against the clean, light beige background of the cafe setting."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKGf79ui6CL6bS6Z253WpDtSR5rjhSWAoP9UdY7OI6_GYppAff5Th6C1XAAUHAlAFgyBitIMafbuLaVHf0rrMKCCWgtqXE-8hF7q_qV5nIMImPrGcBK_a7h02u6h2vLDfU8w8cwJEPhX_5OpiC8fEiMdrmPDo4cxDKdjliSfSFUDa4JVlaKfN7gAqNS3fKyxtouirOwWGQ8OeSfAfWAcV_PctDu0bOOOGeEOHyZwzQL8MJ1yzDyv-_Y3pgon73kDrWViaxGDRjM33M" />
+                        </div>
+                        <div class="flex flex-col flex-grow px-2 pb-2">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="font-headline-md text-headline-md text-primary text-xl">Cookie de Chocolate
+                                </h3>
+                                <span
+                                    class="font-label-md text-label-md text-secondary font-bold whitespace-nowrap ml-4">R$
+                                    9,00</span>
+                            </div>
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">Massa
+                                amanteigada com gotas de chocolate belga, assado diariamente. Crocante por fora e macio
+                                por dentro.</p>
+                            <button
+                                class="w-full border border-primary text-primary px-4 py-3 rounded-full font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2 mt-auto">
+                                <span class="material-symbols-outlined text-[18px]">add</span> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Item 5 -->
+                    <div
+                        class="bg-surface rounded-xl flex flex-col group hover:-translate-y-1 transition-transform duration-300 relative h-full w-full sm:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.666rem)] shrink-0 snap-start">
+                        <div class="w-full h-64 rounded-xl overflow-hidden mb-6 shrink-0 shadow-sm">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="A slice of moist carrot cake topped with a generous layer of rich chocolate ganache, presented on a simple, elegant plate. A fork rests beside it. The scene is brightly lit with natural morning light, highlighting the vibrant orange of the cake and the glossy finish of the chocolate. The background suggests a cozy, artisanal cafe environment."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnYQGDkhro3dV49V-G5LPjjYy5OIIckD8-f4Ba-Px_HzoxLzZBTlU4erWQo9pSTxOE2OKDeK5G-ZQ7PwQPkKXb13e4CN5IATsooOSjUrQCmzi13feHgPt99ypkufhwsjM9rV97eDkLyD3ejsJLkW_YWRUWDPNwGwYPe-Ad0x0-Q2yeSEgOld9ilkxLUe-oPy-or0tAVWVJPYWwahV0_Yohk37j71fUrzObs7jDmOVjJf4LTBC2FEokVX8virk7KzmAGoju2eflq7O9" />
+                        </div>
+                        <div class="flex flex-col flex-grow px-2 pb-2">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="font-headline-md text-headline-md text-primary text-xl">Bolo de Cenoura com
+                                    Chocolate</h3>
+                                <span
+                                    class="font-label-md text-label-md text-secondary font-bold whitespace-nowrap ml-4">R$
+                                    15,00</span>
+                            </div>
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">Receita de
+                                família. Bolo fofinho coberto com uma generosa camada de ganache de chocolate meio
+                                amargo.</p>
+                            <button
+                                class="w-full border border-primary text-primary px-4 py-3 rounded-full font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2 mt-auto">
+                                <span class="material-symbols-outlined text-[18px]">add</span> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Croissant de Manteiga -->
+                    <div
+                        class="bg-surface rounded-xl flex flex-col group hover:-translate-y-1 transition-transform duration-300 relative h-full w-full sm:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.666rem)] shrink-0 snap-start">
+                        <div class="w-full h-64 rounded-xl overflow-hidden mb-6 shrink-0 shadow-sm">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="A freshly baked butter croissant on a ceramic plate, golden brown texture, minimalist cafe background, warm lighting, professional food photography."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4_Fdeu5O0myzFgjbspdlFPGUbdKMP8aWTHJzFfjwuIswt3DZFiAhC-0cYrYoNTMY_50gaL7jwjOJmXc17NIyUBk-7pOMgefzsLmlRRNRzKzKC8nL3hOYLwx0Qj28K1Fr9wM2C6fmvMaMu3S-vseiPZwmSCSIz5RjmPfiQw1BNZqlMNgprO0JNnEAMHEzGmdKYCg1tgOvDV4aFpaBkJWvya8R9NSipE9dnXzQksA4gZWro8vdnFRu4XMWehAHQoZwFZ6uKutT5Q5JO" />
+                        </div>
+                        <div class="flex flex-col flex-grow px-2 pb-2">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="font-headline-md text-headline-md text-primary text-xl">Croissant de Manteiga
+                                </h3>
+                                <span
+                                    class="font-label-md text-label-md text-secondary font-bold whitespace-nowrap ml-4">R$
+                                    12,00</span>
+                            </div>
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">Massa folhada
+                                clássica, assada na hora. Leve, crocante e amanteigada.</p>
+                            <button
+                                class="w-full border border-primary text-primary px-4 py-3 rounded-full font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2 mt-auto">
+                                <span class="material-symbols-outlined text-[18px]">add</span> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Cheesecake de Frutas Vermelhas -->
+                    <div
+                        class="bg-surface rounded-xl flex flex-col group hover:-translate-y-1 transition-transform duration-300 relative h-full w-full sm:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.666rem)] shrink-0 snap-start">
+                        <div class="w-full h-64 rounded-xl overflow-hidden mb-6 shrink-0 shadow-sm">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="A slice of artisanal cheesecake with red berry coulis, elegant presentation, minimalist style, warm tones, high quality photography."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1LU10DUlM81X3IvH3VCmnHoUh3Fv0uL9zIkr13auXB2dTSwmfOJUzEEZurVSPQUZ2N9zkH4o8XmcVi7Vno4m0dzJjMLekZaDvE5pQuhPlxyfrSa1xXb1WBBJvL7kfAgmoqo9TzPLuVeqpzgrUp9Nsc3XvJCjbcK27MCQewnj0tzAsqYcZ6FNzYm6jH9H6L1xs8aUuogh4wsg90Dc3tc3tlDOWi1-xg2p_0Ac6_x6NGiNdgjg4ewuTUL_nHrFrnt_Cbdb8AKkEgYLZ" />
+                        </div>
+                        <div class="flex flex-col flex-grow px-2 pb-2">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="font-headline-md text-headline-md text-primary text-xl">Cheesecake de Frutas
+                                    Vermelhas</h3>
+                                <span
+                                    class="font-label-md text-label-md text-secondary font-bold whitespace-nowrap ml-4">R$
+                                    18,00</span>
+                            </div>
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">Cheesecake
+                                cremoso no estilo nova-iorquino, com coulis de frutas vermelhas artesanal.</p>
+                            <button
+                                class="w-full border border-primary text-primary px-4 py-3 rounded-full font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2 mt-auto">
+                                <span class="material-symbols-outlined text-[18px]">add</span> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full py-lg mt-xl bg-surface-container">
+        <div
+            class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="col-span-1 md:col-span-1">
+                <span class="font-display text-headline-md text-primary block mb-4">Constantino Coffee</span>
+                <p class="font-body-md text-body-md text-on-surface-variant text-sm mt-4">© 2024 Constantino Coffee.
+                    Todos os direitos reservados.</p>
+            </div>
+            <div class="flex flex-col gap-3">
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors focus:underline decoration-2 decoration-primary outline-none"
+                    href="#">Horário: Seg-Sex 08h-20h</a>
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors focus:underline decoration-2 decoration-primary outline-none"
+                    href="#">Endereço: Rua das Amêndoas, 123</a>
+            </div>
+            <div class="flex flex-col gap-3">
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors focus:underline decoration-2 decoration-primary outline-none"
+                    href="#">Instagram</a>
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors focus:underline decoration-2 decoration-primary outline-none"
+                    href="#">Facebook</a>
+            </div>
+            <div class="flex flex-col gap-3">
+                <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors focus:underline decoration-2 decoration-primary outline-none"
+                    href="#">Privacidade</a>
+            </div>
+        </div>
+    </footer>
+    <script src="main.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Promoções - Constantino Coffee</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+        <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#775842",
+                        "on-primary-fixed": "#2c1606",
+                        "inverse-on-surface": "#f4f0eb",
+                        "secondary": "#7a5733",
+                        "tertiary-container": "#6f5f46",
+                        "surface-container-low": "#f7f3ee",
+                        "primary-fixed": "#ffdcc5",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#fdf9f4",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#53452e",
+                        "on-surface": "#1c1c19",
+                        "secondary-fixed": "#ffdcbc",
+                        "on-surface-variant": "#50453e",
+                        "inverse-primary": "#e8bea3",
+                        "on-error-container": "#93000a",
+                        "primary": "#61442f",
+                        "on-tertiary-fixed": "#251a07",
+                        "surface-container-highest": "#e6e2dd",
+                        "on-primary-fixed-variant": "#5d402c",
+                        "tertiary": "#564730",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#f0dabb",
+                        "outline": "#82756d",
+                        "on-background": "#1c1c19",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#d9c4a5",
+                        "outline-variant": "#d3c3ba",
+                        "surface-container": "#f1ede8",
+                        "surface-container-high": "#ebe8e3",
+                        "surface": "#fdf9f4",
+                        "tertiary-fixed": "#f6dfc0",
+                        "background": "#fdf9f4",
+                        "secondary-container": "#fdcfa1",
+                        "primary-fixed-dim": "#e8bea3",
+                        "secondary-fixed-dim": "#ebbe92",
+                        "surface-variant": "#e6e2dd",
+                        "on-secondary-fixed": "#2c1600",
+                        "primary-container": "#7b5b45",
+                        "on-secondary-fixed-variant": "#5f401e",
+                        "on-primary-container": "#ffd6bc",
+                        "inverse-surface": "#31302d",
+                        "on-secondary-container": "#795632",
+                        "surface-dim": "#ddd9d5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "md": "24px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "xl": "80px",
+                        "lg": "48px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "display": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "display": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pt-20">
+    <!-- TopNavBar -->
+    <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-sm border-b border-surface-variant transition-all duration-300">
+        <div class="flex justify-between items-center max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop h-20">
+            <!-- Brand -->
+            <a class="font-display text-headline-md text-primary shrink-0 hover:opacity-80 transition-opacity duration-300" href="index.html">Constantino</a>
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-gutter">
+                <a class="font-label-md text-label-md tracking-wide hover:text-primary transition-colors text-on-surface-variant" href="index.html">Início</a>
+                <a class="font-label-md text-label-md tracking-wide hover:text-primary transition-colors text-on-surface-variant" href="cardapio.html">Cardápio</a>
+                <a class="font-label-md text-label-md tracking-wide hover:text-primary transition-colors text-on-surface-variant" href="promocao.html">Promoções</a>
+                <a class="font-label-md text-label-md tracking-wide hover:text-primary transition-colors text-on-surface-variant" href="sobre.html">Sobre</a>
+                <a class="font-label-md text-label-md tracking-wide hover:text-primary transition-colors text-on-surface-variant" href="contato.html">Contato</a>
+            </nav>
+            <!-- Trailing Action (Desktop) -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="login.html" class="text-primary hover:opacity-80 transition-opacity" aria-label="Login">
+                    <span class="material-symbols-outlined text-2xl">person</span>
+                </a>
+                <a href="carrinho.html" class="relative text-primary hover:opacity-80 transition-opacity" aria-label="Carrinho">
+                    <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                    <span id="cart-badge" class="absolute -top-2 -right-2 bg-error text-on-error text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+                </a>
+                <a href="cardapio.html" class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2 rounded-full hover:opacity-80 transition-opacity duration-300 shadow-sm active:scale-95">
+                    Peça Agora
+                </a>
+            </div>
+            <!-- Mobile Menu Toggle (Mobile) -->
+            <div class="md:hidden flex items-center gap-4">
+                <a href="carrinho.html" class="relative text-primary" aria-label="Carrinho">
+                    <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                    <span id="mobile-cart-badge" class="absolute -top-2 -right-2 bg-error text-on-error text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+                </a>
+                <button id="mobile-menu-btn" class="text-primary p-2 focus:outline-none" aria-label="Menu" aria-expanded="false">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-surface border-b border-surface-variant absolute w-full top-20 shadow-md">
+            <nav class="flex flex-col px-margin-mobile py-4 space-y-4">
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="index.html">Início</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="cardapio.html">Cardápio</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="promocao.html">Promoções</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="sobre.html">Sobre</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="contato.html">Contato</a>
+                <div class="h-px w-full bg-outline-variant/50 my-2"></div>
+                <a class="font-label-md text-label-md text-primary flex items-center gap-2" href="login.html">
+                    <span class="material-symbols-outlined text-xl">person</span> Entrar / Cadastrar
+                </a>
+            </nav>
+        </div>
+    </header>
+    <main class="flex-grow w-full max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+        <!-- Header -->
+        <header class="mb-xl text-center md:text-left">
+            <h1 class="font-display text-headline-lg-mobile md:text-display text-primary mb-sm">Ofertas Exclusivas</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Descubra nossas combinações perfeitas
+                e desfrute de momentos especiais com o verdadeiro sabor Constantino.</p>
+        </header>
+        <!-- Promotions Grid -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-xl">
+            <!-- Featured Promo: Combo Cappuccino + Cookie -->
+            <div
+                class="md:col-span-8 bg-surface-container rounded-xl overflow-hidden shadow-sm flex flex-col md:flex-row group hover:shadow-lg transition-shadow duration-300">
+                <div class="w-full md:w-1/2 h-64 md:h-auto relative">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        data-alt="A beautiful top-down shot of a ceramic cup of hot cappuccino with latte art, placed next to a large, freshly baked chocolate chip cookie on a rustic wooden table. The lighting is warm and natural, creating a cozy and premium cafeteria atmosphere. Color palette features deep espresso browns, creamy whites, and warm earthy tones."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsAVxXOIMhhVeBHpPrEuh9WqTGn6p5pt_jHj0u1QxoYwRBwsCMsiLWGIp9lEO5M5adSppXnMXXLaIcc7qTN_A8MfhusiWnbd1CBOSEeYdOJUrxqqjgqnoCPY32jeGJimmAChwAZGGkRuQnVnuQCr5LKxptHONZrDCndpmt36umTTS_xe8Jir1Tl1p1Uj9CXGAeu26z8S_nYdciyX4mUq7paX4o5V0Gh0rwSe9G6mu4RNSaGpTG8bYI56GQUvWrMgxTbsk47mTDeDXU" />
+                    <div
+                        class="absolute top-4 left-4 bg-tertiary-container text-on-tertiary-container px-sm py-xs rounded-full font-label-sm text-label-sm">
+                        Mais Vendido
+                    </div>
+                </div>
+                <div class="p-md md:p-lg flex flex-col justify-center w-full md:w-1/2 bg-surface-container">
+                    <div class="flex items-center gap-2 mb-sm text-secondary">
+                        <span
+                            class="material-symbols-outlined text-sm [font-variation-settings:'FILL'_0,'wght'_400,'GRAD'_0,'opsz'_24]">local_cafe</span>
+                        <span class="font-label-md text-label-md">Combo Clássico</span>
+                    </div>
+                    <h2 class="font-headline-md text-headline-md text-on-surface mb-sm">Cappuccino + Cookie</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-lg flex-grow">A combinação perfeita
+                        para a sua tarde. Nosso cappuccino cremoso acompanhado do nosso famoso cookie de gotas de
+                        chocolate artesanal.</p>
+                    <div class="flex items-center justify-between mt-auto">
+                        <div class="flex flex-col">
+                            <span class="text-sm line-through text-outline">R$ 32,00</span>
+                            <span class="font-headline-md text-headline-md text-primary font-bold">R$ 24,90</span>
+                        </div>
+                        <button
+                            class="bg-primary text-on-primary px-md py-sm rounded-xl font-label-md hover:opacity-90 transition-opacity">Resgatar</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Secondary Promo 1: Café do Dia -->
+            <div
+                class="md:col-span-4 bg-surface rounded-xl overflow-hidden border border-surface-variant flex flex-col group hover:shadow-md transition-shadow duration-300">
+                <div class="h-48 w-full relative overflow-hidden">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        data-alt="A close-up shot of rich, dark filter coffee being poured from a sleek gooseneck kettle into a minimalist glass server. Steam rises softly against a bright, airy background. The lighting is clean and crisp, emphasizing a modern artisanal aesthetic with warm caramel and amber tones."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE4-_PUAk5f4GacIrSERZtcpmJYa2KWLY3vFrMfphMQBMoQofY-g0_5JCAghvb3D4duAMgKGgilTtrylmeGmc5rCpiZADUgL55Aodp4NWyEwi0MNwumlRCc9EZWHq6Q6BTUjZKEe2_aQ_NVgyh_W65rUT0e5CvACNkZuDjuQg3LhGHSI-p3gqnArmBdsZgycFld44fCZ2DrbILBFhGeZhKU9Xes-obYGeuhHFbiN8wYchkcLYTcmxV2DFvNm-nHcwtQCn2R5nxi4UZ" />
+                </div>
+                <div class="p-md flex flex-col flex-grow">
+                    <h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Café do Dia</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-md flex-grow">Blend especial Arábica
+                        com notas de caramelo e nozes. Preparo no método V60.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="font-headline-md text-headline-md text-primary font-bold">R$ 9,90</span>
+                        <button
+                            class="border border-primary text-primary px-md py-sm rounded-xl font-label-md hover:bg-primary-fixed hover:text-on-primary-fixed transition-colors">Pedir</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Secondary Promo 2: Desconto Bebidas Geladas -->
+            <div
+                class="md:col-span-12 bg-secondary-container rounded-xl p-md md:p-lg flex flex-col md:flex-row items-center justify-between gap-gutter">
+                <div class="flex-grow max-w-2xl text-center md:text-left">
+                    <h2 class="font-headline-md text-headline-md text-on-secondary-container mb-sm">Refresque seu dia!
+                    </h2>
+                    <p class="font-body-md text-body-md text-on-secondary-container/80">Todos os Iced Lattes e Cold
+                        Brews com <strong>20% de desconto</strong> das 14h às 17h. Perfeito para os dias mais quentes.
+                    </p>
+                </div>
+                <div class="flex-shrink-0 flex items-center gap-4">
+                    <span
+                        class="material-symbols-outlined text-display text-on-secondary-container [font-variation-settings:'FILL'_0,'wght'_400,'GRAD'_0,'opsz'_24]">ac_unit</span>
+                    <button
+                        class="bg-surface text-primary px-lg py-sm rounded-xl font-label-md font-bold hover:shadow-md transition-shadow">Ver
+                        Opções</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer
+        class="w-full py-lg mt-xl bg-surface-container dark:bg-surface-container-highest bg-surface-container dark:bg-surface-container-highest">
+        <div
+            class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="col-span-1 md:col-span-4 mb-md">
+                <span class="font-display text-headline-md text-primary">Constantino Coffee</span>
+            </div>
+            <div class="flex flex-col gap-sm">
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors focus:underline decoration-2 decoration-primary"
+                    href="#">Horário: Seg-Sex 08h-20h</a>
+            </div>
+            <div class="flex flex-col gap-sm">
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors focus:underline decoration-2 decoration-primary"
+                    href="#">Endereço: Rua das Amêndoas, 123</a>
+            </div>
+            <div class="flex flex-col gap-sm">
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors focus:underline decoration-2 decoration-primary"
+                    href="#">Instagram</a>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors focus:underline decoration-2 decoration-primary"
+                    href="#">Facebook</a>
+            </div>
+            <div class="flex flex-col gap-sm">
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors focus:underline decoration-2 decoration-primary"
+                    href="#">Privacidade</a>
+            </div>
+            <div
+                class="col-span-1 md:col-span-4 mt-lg pt-md border-t border-surface-variant/50 text-center md:text-left">
+                <p class="font-body-md text-body-md text-on-surface-variant text-sm">© 2024 Constantino Coffee. Todos os
+                    direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="main.js" defer></script>
+</body>
+
+</html>
