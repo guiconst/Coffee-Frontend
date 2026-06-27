@@ -175,15 +175,16 @@
                     <h2 class="font-headline-md text-primary mb-6 flex items-center gap-2">
                         <span class="material-symbols-outlined">location_on</span> Endereço de Entrega
                     </h2>
-                    <form class="space-y-4">
+                    <form id="address-form" class="space-y-4">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <input type="text" placeholder="CEP" class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-fixed focus:ring-1 focus:ring-primary-fixed outline-none" required>
-                            <input type="text" placeholder="Rua" class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-fixed outline-none" required>
+                            <input id="addr-cep" type="text" placeholder="CEP" class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-fixed focus:ring-1 focus:ring-primary-fixed outline-none" required>
+                            <input id="addr-street" type="text" placeholder="Rua" class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-fixed outline-none" required>
                         </div>
                         <div class="grid grid-cols-3 gap-4">
-                            <input type="text" placeholder="Número" class="col-span-1 bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-fixed outline-none" required>
-                            <input type="text" placeholder="Complemento" class="col-span-2 bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-fixed outline-none">
+                            <input id="addr-number" type="text" placeholder="Número" class="col-span-1 bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-fixed outline-none" required>
+                            <input id="addr-complement" type="text" placeholder="Complemento" class="col-span-2 bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-fixed outline-none">
                         </div>
+                        <input id="addr-city" type="text" placeholder="Cidade" class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-fixed outline-none" required>
                     </form>
                 </div>
                 <!-- Payment -->
@@ -215,9 +216,78 @@
                         <span>Total Pago</span>
                         <span id="checkout-total">R$ 0,00</span>
                     </div>
-                    <button onclick="finishCheckout()" class="w-full bg-primary text-on-primary px-6 py-4 rounded-full font-label-md hover:opacity-90 active:scale-95 transition-all">
+                    <div id="checkout-error" class="hidden bg-error-container text-on-error-container text-sm px-4 py-3 rounded-lg mb-3"></div>
+                    <button id="btn-confirm" onclick="handleCheckout()" class="w-full bg-primary text-on-primary px-6 py-4 rounded-full font-label-md hover:opacity-90 active:scale-95 transition-all">
                         Confirmar e Pagar
                     </button>
+                    <script>
+                        const API = 'https://coffee-backend-eight.vercel.app';
+
+                        async function handleCheckout() {
+                            const cart = JSON.parse(localStorage.getItem('coffee_cart') || '[]');
+                            if (cart.length === 0) {
+                                alert('Seu carrinho está vazio!');
+                                return;
+                            }
+
+                            const session = JSON.parse(localStorage.getItem('coffee_session') || 'null');
+                            if (!session) {
+                                showToast('Faça login para finalizar o pedido.');
+                                setTimeout(() => window.location.href = 'login.html', 1200);
+                                return;
+                            }
+
+                            const street = document.getElementById('addr-street').value;
+                            const number = document.getElementById('addr-number').value;
+                            const city = document.getElementById('addr-city').value;
+                            const cep = document.getElementById('addr-cep').value;
+                            if (!street || !number || !city || !cep) {
+                                document.getElementById('checkout-error').textContent = 'Preencha o endereço completo.';
+                                document.getElementById('checkout-error').classList.remove('hidden');
+                                return;
+                            }
+
+                            const paymentRadio = document.querySelector('input[name="payment"]:checked');
+                            const paymentMap = { 0: 'credit_card', 1: 'pix' };
+                            const radios = document.querySelectorAll('input[name="payment"]');
+                            let paymentMethod = 'credit_card';
+                            radios.forEach((r, i) => { if (r.checked) paymentMethod = paymentMap[i] || 'credit_card'; });
+
+                            const btn = document.getElementById('btn-confirm');
+                            btn.textContent = 'Processando...';
+                            btn.disabled = true;
+                            document.getElementById('checkout-error').classList.add('hidden');
+
+                            try {
+                                const items = cart.map(i => ({
+                                    product_id: i.id,
+                                    name: i.name,
+                                    price: i.price,
+                                    quantity: i.quantity
+                                }));
+
+                                const res = await fetch(`${API}/api/orders`, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'Authorization': `Bearer ${session.access_token}`
+                                    },
+                                    body: JSON.stringify({ items, payment_method: paymentMethod })
+                                });
+                                const data = await res.json();
+                                if (!res.ok) throw new Error(data.error || 'Erro ao criar pedido');
+
+                                localStorage.removeItem('coffee_cart');
+                                showToast('Pedido confirmado! Obrigado 🎉');
+                                setTimeout(() => window.location.href = 'index.html', 2000);
+                            } catch (err) {
+                                document.getElementById('checkout-error').textContent = err.message;
+                                document.getElementById('checkout-error').classList.remove('hidden');
+                                btn.textContent = 'Confirmar e Pagar';
+                                btn.disabled = false;
+                            }
+                        }
+                    </script>
                 </div>
             </div>
         </div>
