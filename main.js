@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // 0. Ícone de perfil: redireciona para perfil.html se logado, login.html se não
+    const _session = JSON.parse(localStorage.getItem('coffee_session') || 'null');
+    const _isLoggedIn = !!(_session && _session.access_token);
+    document.querySelectorAll('a[aria-label="Login"], a[aria-label="Perfil"]').forEach(link => {
+        link.setAttribute('href', _isLoggedIn ? 'perfil.html' : 'login.html');
+        link.setAttribute('aria-label', _isLoggedIn ? 'Perfil' : 'Login');
+    });
+
     // 1. Mobile Menu Toggle
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
