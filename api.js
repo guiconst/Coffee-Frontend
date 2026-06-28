@@ -5,7 +5,7 @@
  * Configure a URL base abaixo apontando para seu deploy na Vercel.
  */
 
-const API_BASE = window.CONSTANTINO_API_URL || 'https://constantino-coffee-api.vercel.app';
+const API_BASE = window.CONSTANTINO_API_URL || 'https://coffee-backend-eight.vercel.app';
 
 // ── Helpers ───────────────────────────────────────────────
 
