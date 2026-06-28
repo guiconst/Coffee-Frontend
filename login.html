@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="pt-BR">
 
@@ -276,19 +276,29 @@
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({
-                                email: document.getElementById('reg-email').value,
+                                email: document.getElementById('reg-email').value.trim(),
                                 password: document.getElementById('reg-password').value,
-                                full_name: document.getElementById('reg-name').value
+                                full_name: document.getElementById('reg-name').value.trim()
                             })
                         });
                         const data = await res.json();
-                        if (!res.ok) throw new Error(data.error || 'Erro ao cadastrar');
+                        if (!res.ok) throw new Error(data.error || 'Erro ao cadastrar. Tente novamente.');
+
                         if (data.session) {
+                            // Login automático — sessão disponível imediatamente
                             localStorage.setItem('coffee_session', JSON.stringify(data.session));
                             localStorage.setItem('coffee_user', JSON.stringify(data.user));
+                            showToast('✅ Conta criada com sucesso!');
+                            setTimeout(() => window.location.href = 'index.html', 1200);
+                        } else if (data.emailConfirmationRequired) {
+                            // Supabase enviou e-mail de confirmação
+                            showToast('📧 Conta criada! Confirme seu e-mail para entrar.');
+                            btn.textContent = 'E-mail enviado!';
+                            // Não redireciona — usuário precisa confirmar o e-mail primeiro
+                        } else {
+                            showToast('Conta criada! Faça login para continuar.');
+                            setTimeout(() => switchTab('login'), 1500);
                         }
-                        showToast('Conta criada! Verifique seu e-mail se necessário.');
-                        setTimeout(() => window.location.href = 'index.html', 1500);
                     } catch (err) {
                         showError(err.message);
                         btn.textContent = 'Criar conta';
