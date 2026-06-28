@@ -2,10 +2,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // 0. Ícone de perfil: redireciona para perfil.html se logado, login.html se não
     const _session = JSON.parse(localStorage.getItem('coffee_session') || 'null');
     const _isLoggedIn = !!(_session && _session.access_token);
+    const _profileHref = _isLoggedIn ? 'perfil.html' : 'login.html';
+    const _profileLabel = _isLoggedIn ? 'Perfil' : 'Login';
+
+    // Desktop + mobile header icons
     document.querySelectorAll('a[aria-label="Login"], a[aria-label="Perfil"]').forEach(link => {
-        link.setAttribute('href', _isLoggedIn ? 'perfil.html' : 'login.html');
-        link.setAttribute('aria-label', _isLoggedIn ? 'Perfil' : 'Login');
+        link.setAttribute('href', _profileHref);
+        link.setAttribute('aria-label', _profileLabel);
     });
+
+    // Link do menu hamburguer
+    const _mobileProfileLink = document.getElementById('mobile-profile-link');
+    if (_mobileProfileLink) {
+        _mobileProfileLink.setAttribute('href', _profileHref);
+        const _span = _mobileProfileLink.querySelector('span.material-symbols-outlined');
+        _mobileProfileLink.innerHTML = `<span class="material-symbols-outlined text-xl">${_isLoggedIn ? 'account_circle' : 'person'}</span> ${_isLoggedIn ? 'Meu Perfil' : 'Entrar / Cadastrar'}`;
+    }
 
     // 1. Mobile Menu Toggle
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
