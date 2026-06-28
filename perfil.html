@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Meu Perfil - Constantino Coffee</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#775842",
+                        "on-primary-fixed": "#2c1606",
+                        "inverse-on-surface": "#f4f0eb",
+                        "secondary": "#7a5733",
+                        "tertiary-container": "#6f5f46",
+                        "surface-container-low": "#f7f3ee",
+                        "primary-fixed": "#ffdcc5",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#fdf9f4",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#53452e",
+                        "on-surface": "#1c1c19",
+                        "secondary-fixed": "#ffdcbc",
+                        "on-surface-variant": "#50453e",
+                        "inverse-primary": "#e8bea3",
+                        "on-error-container": "#93000a",
+                        "primary": "#61442f",
+                        "on-tertiary-fixed": "#251a07",
+                        "surface-container-highest": "#e6e2dd",
+                        "on-primary-fixed-variant": "#5d402c",
+                        "tertiary": "#564730",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#f0dabb",
+                        "outline": "#82756d",
+                        "on-background": "#1c1c19",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#d9c4a5",
+                        "outline-variant": "#d3c3ba",
+                        "surface-container": "#f1ede8",
+                        "surface-container-high": "#ebe8e3",
+                        "surface": "#fdf9f4",
+                        "tertiary-fixed": "#f6dfc0",
+                        "background": "#fdf9f4",
+                        "secondary-container": "#fdcfa1",
+                        "primary-fixed-dim": "#e8bea3",
+                        "secondary-fixed-dim": "#ebbe92",
+                        "surface-variant": "#e6e2dd",
+                        "on-secondary-fixed": "#2c1600",
+                        "primary-container": "#7b5b45",
+                        "on-secondary-fixed-variant": "#5f401e",
+                        "on-primary-container": "#ffd6bc",
+                        "inverse-surface": "#31302d",
+                        "on-secondary-container": "#795632",
+                        "surface-dim": "#ddd9d5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "md": "24px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "xl": "80px",
+                        "lg": "48px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "display": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "display": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-background text-on-background min-h-screen flex flex-col antialiased">
+
+    <!-- TopNavBar -->
+    <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-sm border-b border-surface-variant transition-all duration-300">
+        <div class="flex justify-between items-center max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop h-20">
+            <a class="font-display text-headline-md text-primary shrink-0 hover:opacity-80 transition-opacity duration-300" href="index.html">Constantino</a>
+            <nav class="hidden md:flex items-center gap-gutter">
+                <a class="font-label-md text-label-md tracking-wide hover:text-primary transition-colors text-on-surface-variant" href="index.html">Início</a>
+                <a class="font-label-md text-label-md tracking-wide hover:text-primary transition-colors text-on-surface-variant" href="cardapio.html">Cardápio</a>
+                <a class="font-label-md text-label-md tracking-wide hover:text-primary transition-colors text-on-surface-variant" href="promocao.html">Promoções</a>
+                <a class="font-label-md text-label-md tracking-wide hover:text-primary transition-colors text-on-surface-variant" href="sobre.html">Sobre</a>
+                <a class="font-label-md text-label-md tracking-wide hover:text-primary transition-colors text-on-surface-variant" href="contato.html">Contato</a>
+            </nav>
+            <div class="hidden md:flex items-center gap-4">
+                <a href="perfil.html" class="text-primary hover:opacity-80 transition-opacity" aria-label="Perfil">
+                    <span class="material-symbols-outlined text-2xl">person</span>
+                </a>
+                <a href="carrinho.html" class="relative text-primary hover:opacity-80 transition-opacity" aria-label="Carrinho">
+                    <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                    <span id="cart-badge" class="absolute -top-2 -right-2 bg-error text-on-error text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+                </a>
+                <a href="cardapio.html" class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2 rounded-full hover:opacity-80 transition-opacity duration-300 shadow-sm active:scale-95">
+                    Pedir Agora
+                </a>
+            </div>
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-btn" class="md:hidden text-primary p-2">
+                <span class="material-symbols-outlined text-2xl">menu</span>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-surface border-t border-surface-variant px-margin-mobile py-4 flex flex-col gap-4">
+            <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="index.html">Início</a>
+            <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="cardapio.html">Cardápio</a>
+            <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="promocao.html">Promoções</a>
+            <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="sobre.html">Sobre</a>
+            <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="contato.html">Contato</a>
+            <div class="flex items-center gap-4 pt-2 border-t border-surface-variant">
+                <a href="carrinho.html" class="relative text-primary" aria-label="Carrinho">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    <span id="mobile-cart-badge" class="absolute -top-2 -right-2 bg-error text-on-error text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+                </a>
+                <a href="cardapio.html" class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2 rounded-full">Pedir Agora</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-20">
+
+        <!-- Loading State -->
+        <div id="profile-loading" class="flex items-center justify-center min-h-[60vh]">
+            <div class="text-center">
+                <div class="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                <p class="font-body-md text-on-surface-variant">Carregando perfil...</p>
+            </div>
+        </div>
+
+        <!-- Profile Content (hidden until loaded) -->
+        <div id="profile-content" class="hidden">
+
+            <!-- Hero Banner -->
+            <div class="w-full h-36 bg-gradient-to-r from-primary-container via-secondary-container to-tertiary-fixed relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDpT5cSBs9VqrTxzp1eBtZzTo1uPL1W4UVPmNLyr2tNk277IXGTcojhgKkgsr6POFgSvV79lmRRASIqEQSu1Qd-7TSUKgMvjMFzKNie9EBCIOsIGxHqUrZp1pXrKh31-srQOPLifgTURCTypPSHghvU-wQ27MPzYV-lbkcqCRkltjTyuTmLjt9Il0aFTIFGojgToCBqyqOjCmg2zqnhw4-QAaqzb88WhRZp2Mai8gmdVqmmTitiF9fz7_1vUL1eL342KVExAp7p6Na_'); background-size: cover; background-position: center;"></div>
+            </div>
+
+            <!-- Profile Header Card -->
+            <div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
+                <div class="bg-surface rounded-[24px] shadow-[0_10px_30px_rgba(78,52,46,0.08)] -mt-10 p-6 md:p-8 flex flex-col md:flex-row items-center md:items-end gap-6 mb-8">
+                    <!-- Avatar -->
+                    <div class="relative shrink-0">
+                        <div id="avatar-circle" class="w-24 h-24 md:w-28 md:h-28 rounded-full bg-primary-container border-4 border-surface flex items-center justify-center shadow-md">
+                            <span id="avatar-initials" class="font-display text-3xl md:text-4xl text-on-primary-container"></span>
+                        </div>
+                    </div>
+                    <!-- Name & Email -->
+                    <div class="flex-grow text-center md:text-left">
+                        <h1 id="profile-name" class="font-headline-lg text-headline-lg text-on-surface mb-1"></h1>
+                        <p id="profile-email" class="font-body-md text-body-md text-on-surface-variant"></p>
+                        <p id="profile-member-since" class="font-label-sm text-label-sm text-outline mt-1"></p>
+                    </div>
+                    <!-- Logout Button -->
+                    <button id="btn-logout" class="shrink-0 flex items-center gap-2 border border-outline-variant text-on-surface-variant font-label-md text-label-md px-5 py-2.5 rounded-full hover:border-error hover:text-error transition-colors">
+                        <span class="material-symbols-outlined text-lg">logout</span>
+                        Sair
+                    </button>
+                </div>
+
+                <!-- Content Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter pb-xl">
+
+                    <!-- Left Column: Edit Profile -->
+                    <div class="lg:col-span-2 flex flex-col gap-gutter">
+
+                        <!-- Edit Profile Card -->
+                        <div class="bg-surface rounded-[24px] shadow-[0_10px_30px_rgba(78,52,46,0.08)] p-6 md:p-8">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-on-primary-container text-xl">person_edit</span>
+                                </div>
+                                <h2 class="font-headline-md text-headline-md text-on-surface">Dados Pessoais</h2>
+                            </div>
+
+                            <div id="edit-error" class="hidden mb-4 p-3 bg-error-container text-on-error-container rounded-xl font-label-md text-label-md"></div>
+                            <div id="edit-success" class="hidden mb-4 p-3 bg-surface-container-high text-primary rounded-xl font-label-md text-label-md flex items-center gap-2">
+                                <span class="material-symbols-outlined text-lg">check_circle</span>
+                                <span>Perfil atualizado com sucesso!</span>
+                            </div>
+
+                            <div class="flex flex-col gap-4">
+                                <div>
+                                    <label class="block font-label-sm text-on-surface mb-1.5">Nome completo</label>
+                                    <input id="input-name" type="text" placeholder="Seu nome completo"
+                                        class="w-full bg-surface border border-outline-variant rounded-xl px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-body-md" />
+                                </div>
+                                <div>
+                                    <label class="block font-label-sm text-on-surface mb-1.5">Telefone</label>
+                                    <input id="input-phone" type="tel" placeholder="(11) 99999-9999"
+                                        class="w-full bg-surface border border-outline-variant rounded-xl px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-body-md" />
+                                </div>
+                                <div>
+                                    <label class="block font-label-sm text-on-surface mb-1.5">E-mail</label>
+                                    <input id="input-email" type="email" disabled
+                                        class="w-full bg-surface-container border border-outline-variant rounded-xl px-4 py-3 outline-none font-body-md text-body-md text-on-surface-variant cursor-not-allowed" />
+                                    <p class="font-label-sm text-label-sm text-outline mt-1.5">O e-mail não pode ser alterado.</p>
+                                </div>
+                                <button id="btn-save" class="mt-2 w-full bg-primary text-on-primary font-label-md text-label-md py-3.5 rounded-full hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined text-lg">save</span>
+                                    Salvar Alterações
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Orders Card -->
+                        <div class="bg-surface rounded-[24px] shadow-[0_10px_30px_rgba(78,52,46,0.08)] p-6 md:p-8">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-on-secondary-container text-xl">receipt_long</span>
+                                </div>
+                                <h2 class="font-headline-md text-headline-md text-on-surface">Meus Pedidos</h2>
+                            </div>
+                            <div id="orders-container">
+                                <div class="flex items-center justify-center py-10 text-center flex-col gap-3">
+                                    <div class="w-8 h-8 border-3 border-primary border-t-transparent rounded-full animate-spin"></div>
+                                    <p class="font-body-md text-on-surface-variant">Buscando pedidos...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Quick Links & Info -->
+                    <div class="flex flex-col gap-gutter">
+
+                        <!-- Quick Actions -->
+                        <div class="bg-surface rounded-[24px] shadow-[0_10px_30px_rgba(78,52,46,0.08)] p-6">
+                            <h2 class="font-headline-md text-headline-md text-on-surface mb-4">Acesso Rápido</h2>
+                            <div class="flex flex-col gap-2">
+                                <a href="cardapio.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container transition-colors group">
+                                    <div class="w-9 h-9 rounded-full bg-primary-container flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-on-primary-container text-lg">menu_book</span>
+                                    </div>
+                                    <span class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Ver Cardápio</span>
+                                    <span class="material-symbols-outlined text-outline ml-auto text-lg">chevron_right</span>
+                                </a>
+                                <a href="carrinho.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container transition-colors group">
+                                    <div class="w-9 h-9 rounded-full bg-secondary-container flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-on-secondary-container text-lg">shopping_cart</span>
+                                    </div>
+                                    <span class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Meu Carrinho</span>
+                                    <span class="material-symbols-outlined text-outline ml-auto text-lg">chevron_right</span>
+                                </a>
+                                <a href="promocao.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container transition-colors group">
+                                    <div class="w-9 h-9 rounded-full bg-tertiary-fixed flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-on-tertiary-fixed text-lg">local_offer</span>
+                                    </div>
+                                    <span class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Promoções</span>
+                                    <span class="material-symbols-outlined text-outline ml-auto text-lg">chevron_right</span>
+                                </a>
+                                <a href="contato.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container transition-colors group">
+                                    <div class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-on-surface-variant text-lg">support_agent</span>
+                                    </div>
+                                    <span class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Suporte</span>
+                                    <span class="material-symbols-outlined text-outline ml-auto text-lg">chevron_right</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Member Card -->
+                        <div class="bg-gradient-to-br from-primary to-primary-container rounded-[24px] p-6 text-on-primary shadow-[0_10px_30px_rgba(78,52,46,0.2)]">
+                            <div class="flex items-center gap-2 mb-4 opacity-80">
+                                <span class="material-symbols-outlined text-lg">workspace_premium</span>
+                                <span class="font-label-sm text-label-sm uppercase tracking-widest">Membro</span>
+                            </div>
+                            <p class="font-display text-headline-md text-on-primary mb-1">Constantino Coffee</p>
+                            <p id="card-name" class="font-label-md text-label-md opacity-80 mb-6"></p>
+                            <div class="flex justify-between items-end">
+                                <div>
+                                    <p class="font-label-sm text-label-sm opacity-60 uppercase tracking-wider mb-0.5">Membro desde</p>
+                                    <p id="card-date" class="font-label-md text-label-md opacity-90"></p>
+                                </div>
+                                <span class="material-symbols-outlined text-4xl opacity-20">coffee</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-lg mt-xl bg-surface-container text-on-surface">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="col-span-1 md:col-span-2">
+                <a class="font-display text-headline-md text-primary mb-md block" href="index.html">Constantino Coffee</a>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-sm mb-md">Cultivando momentos de pausa com grãos selecionados e paixão pela arte do café.</p>
+                <p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Constantino Coffee. Todos os direitos reservados.</p>
+            </div>
+            <div class="col-span-1">
+                <h4 class="font-headline-md text-headline-md text-on-surface mb-md">Informações</h4>
+                <ul class="flex flex-col gap-sm">
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Horário: Seg-Sex 08h-20h</a></li>
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Endereço: Rua das Amêndoas, 123</a></li>
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacidade</a></li>
+                </ul>
+            </div>
+            <div class="col-span-1">
+                <h4 class="font-headline-md text-headline-md text-on-surface mb-md">Redes Sociais</h4>
+                <ul class="flex flex-col gap-sm">
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Instagram</a></li>
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js" defer></script>
+
+    <script>
+        const API = 'https://coffee-backend-eight.vercel.app';
+
+        function getSession() {
+            return JSON.parse(localStorage.getItem('coffee_session') || 'null');
+        }
+
+        function getUser() {
+            return JSON.parse(localStorage.getItem('coffee_user') || 'null');
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return '—';
+            return new Date(dateStr).toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+        }
+
+        function getInitials(name, email) {
+            if (name && name.trim()) {
+                const parts = name.trim().split(' ');
+                return parts.length >= 2
+                    ? (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
+                    : parts[0].slice(0, 2).toUpperCase();
+            }
+            if (email) return email[0].toUpperCase();
+            return '☕';
+        }
+
+        function showEditError(msg) {
+            const el = document.getElementById('edit-error');
+            el.textContent = msg;
+            el.classList.remove('hidden');
+            document.getElementById('edit-success').classList.add('hidden');
+        }
+
+        function showEditSuccess() {
+            document.getElementById('edit-success').classList.remove('hidden');
+            document.getElementById('edit-error').classList.add('hidden');
+            setTimeout(() => document.getElementById('edit-success').classList.add('hidden'), 3000);
+        }
+
+        function renderOrders(orders) {
+            const container = document.getElementById('orders-container');
+
+            if (!orders || orders.length === 0) {
+                container.innerHTML = `
+                    <div class="flex flex-col items-center py-10 text-center gap-3">
+                        <div class="w-14 h-14 rounded-full bg-surface-container flex items-center justify-center">
+                            <span class="material-symbols-outlined text-3xl text-outline">receipt_long</span>
+                        </div>
+                        <p class="font-body-md text-on-surface-variant">Você ainda não fez nenhum pedido.</p>
+                        <a href="cardapio.html" class="mt-1 bg-primary text-on-primary font-label-md text-label-md px-6 py-2.5 rounded-full hover:opacity-90 transition-opacity">
+                            Explorar Cardápio
+                        </a>
+                    </div>`;
+                return;
+            }
+
+            const statusLabel = {
+                pending: { label: 'Pendente', color: 'bg-secondary-container text-on-secondary-container' },
+                confirmed: { label: 'Confirmado', color: 'bg-primary-container text-on-primary-container' },
+                preparing: { label: 'Preparando', color: 'bg-tertiary-fixed text-on-tertiary-fixed' },
+                out_for_delivery: { label: 'Em entrega', color: 'bg-secondary-container text-on-secondary-container' },
+                delivered: { label: 'Entregue', color: 'bg-surface-container-high text-primary' },
+                cancelled: { label: 'Cancelado', color: 'bg-error-container text-on-error-container' },
+            };
+
+            container.innerHTML = orders.slice(0, 5).map(order => {
+                const st = statusLabel[order.status] || { label: order.status, color: 'bg-surface-container text-on-surface' };
+                const date = new Date(order.created_at).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
+                const total = `R$ ${parseFloat(order.total).toFixed(2).replace('.', ',')}`;
+                return `
+                    <div class="flex items-center justify-between py-4 border-b border-surface-variant last:border-0 gap-4">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <div class="w-10 h-10 rounded-full bg-surface-container shrink-0 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-outline text-lg">coffee</span>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="font-label-md text-on-surface truncate">Pedido #${order.id.slice(-6).toUpperCase()}</p>
+                                <p class="font-label-sm text-outline">${date}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 shrink-0">
+                            <span class="font-label-md text-on-surface">${total}</span>
+                            <span class="font-label-sm text-label-sm px-2.5 py-1 rounded-full ${st.color}">${st.label}</span>
+                        </div>
+                    </div>`;
+            }).join('');
+        }
+
+        async function loadProfile() {
+            const session = getSession();
+            const user = getUser();
+
+            // Redireciona se não estiver logado
+            if (!session || !session.access_token) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            try {
+                // Busca perfil do backend
+                const res = await fetch(`${API}/api/auth/me`, {
+                    headers: { Authorization: `Bearer ${session.access_token}` }
+                });
+
+                let profile = null;
+                if (res.ok) {
+                    const data = await res.json();
+                    profile = data.profile;
+                }
+
+                // Fallback para dados do localStorage
+                const email = user?.email || session?.user?.email || '';
+                const fullName = profile?.full_name || user?.user_metadata?.full_name || '';
+                const phone = profile?.phone || '';
+                const createdAt = profile?.created_at || user?.created_at || '';
+
+                // Preenche avatar
+                document.getElementById('avatar-initials').textContent = getInitials(fullName, email);
+
+                // Preenche header
+                document.getElementById('profile-name').textContent = fullName || 'Bem-vindo!';
+                document.getElementById('profile-email').textContent = email;
+                document.getElementById('profile-member-since').textContent = createdAt ? `Membro desde ${formatDate(createdAt)}` : '';
+
+                // Preenche formulário
+                document.getElementById('input-name').value = fullName;
+                document.getElementById('input-phone').value = phone;
+                document.getElementById('input-email').value = email;
+
+                // Preenche card de membro
+                document.getElementById('card-name').textContent = fullName || email;
+                document.getElementById('card-date').textContent = formatDate(createdAt);
+
+                // Busca pedidos
+                const ordersRes = await fetch(`${API}/api/orders`, {
+                    headers: { Authorization: `Bearer ${session.access_token}` }
+                });
+                if (ordersRes.ok) {
+                    const ordersData = await ordersRes.json();
+                    renderOrders(ordersData.orders || []);
+                } else {
+                    renderOrders([]);
+                }
+
+            } catch (err) {
+                console.error('Erro ao carregar perfil:', err);
+                renderOrders([]);
+            }
+
+            // Mostra conteúdo
+            document.getElementById('profile-loading').classList.add('hidden');
+            document.getElementById('profile-content').classList.remove('hidden');
+        }
+
+        // Salvar perfil
+        document.getElementById('btn-save').addEventListener('click', async () => {
+            const session = getSession();
+            if (!session) return;
+
+            const btn = document.getElementById('btn-save');
+            const name = document.getElementById('input-name').value.trim();
+            const phone = document.getElementById('input-phone').value.trim();
+
+            if (!name) {
+                showEditError('Por favor, informe seu nome completo.');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = `<span class="w-5 h-5 border-2 border-on-primary border-t-transparent rounded-full animate-spin"></span> Salvando...`;
+
+            try {
+                const res = await fetch(`${API}/api/auth/me`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${session.access_token}`
+                    },
+                    body: JSON.stringify({ full_name: name, phone })
+                });
+
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Erro ao salvar.');
+
+                // Atualiza UI
+                document.getElementById('profile-name').textContent = name;
+                document.getElementById('avatar-initials').textContent = getInitials(name, '');
+                document.getElementById('card-name').textContent = name;
+
+                // Atualiza localStorage
+                const user = getUser();
+                if (user) {
+                    user.user_metadata = { ...user.user_metadata, full_name: name };
+                    localStorage.setItem('coffee_user', JSON.stringify(user));
+                }
+
+                showEditSuccess();
+            } catch (err) {
+                showEditError(err.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `<span class="material-symbols-outlined text-lg">save</span> Salvar Alterações`;
+            }
+        });
+
+        // Logout
+        document.getElementById('btn-logout').addEventListener('click', () => {
+            localStorage.removeItem('coffee_session');
+            localStorage.removeItem('coffee_user');
+            window.location.href = 'index.html';
+        });
+
+        // Inicia
+        loadProfile();
+    </script>
+</body>
+
+</html>
