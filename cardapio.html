@@ -294,7 +294,7 @@
             try {
                 const [prodRes, catRes] = await Promise.all([
                     fetch(`${API}/api/products`),
-                    fetch(`${API}/api/categories`)
+                    fetch(`${API}/api/products/categories`)
                 ]);
 
                 if (!prodRes.ok || !catRes.ok) throw new Error('API error');
