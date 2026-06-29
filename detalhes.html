@@ -390,8 +390,8 @@
 
             try {
                 const url = id
-                    ? `${API}/api/products/${id}`
-                    : `${API}/api/products/slug/${slug}`;
+                    ? `${API}/api/products/id/${id}`
+                    : `${API}/api/products/${slug}`;
                 const res = await fetch(url);
                 if (!res.ok) throw new Error('not found');
                 const data = await res.json();
@@ -401,7 +401,7 @@
 
                 // Carrega relacionados da mesma categoria
                 try {
-                    const relRes = await fetch(`${API}/api/products?category=${p.category_id}&limit=4`);
+                    const relRes = await fetch(`${API}/api/products?limit=4`);
                     if (relRes.ok) {
                         const relData = await relRes.json();
                         const related = (relData.products || []).filter(r => r.id !== p.id);
