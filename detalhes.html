@@ -26,8 +26,14 @@
     <style>
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
         .size-option input:checked + div { border-color: #61442f; background-color: rgba(97,68,47,0.08); color: #61442f; }
+        .extra-option { border: 1px solid transparent; border-radius: 0.5rem; }
+        .extra-option:hover { background-color: rgba(241,237,232,1); border-color: rgba(211,195,186,0.5); }
         .extra-option input:checked + div { border-color: #61442f; background-color: rgba(97,68,47,0.06); }
-        .extra-option input:checked + div .extra-check { opacity: 1; background-color: #61442f; color: white; }
+        .extra-check { width: 20px; height: 20px; border-radius: 4px; border: 2px solid #82756d; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.15s; background: white; }
+        .extra-check .material-symbols-outlined { font-size: 14px; color: transparent; }
+        .extra-option input:checked ~ * .extra-check,
+        .extra-option input:checked + div .extra-check { border-color: #61442f; background-color: #61442f; }
+        .extra-option input:checked + div .extra-check .material-symbols-outlined { color: white; }
     </style>
 </head>
 <body class="bg-background text-on-background antialiased min-h-screen flex flex-col pt-[80px]">
@@ -143,7 +149,7 @@
                     </div>
 
                     <!-- Qty + CTA -->
-                    <div class="mt-auto pt-lg border-t border-outline-variant/30 sticky bottom-0 bg-background/95 backdrop-blur-sm md:static md:bg-transparent md:border-t-0 md:pt-0 z-10 pb-margin-mobile md:pb-0 -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0">
+                    <div class="mt-auto pt-lg border-t border-outline-variant/30">
                         <!-- Quantity -->
                         <div class="flex items-center justify-between mb-md">
                             <div class="flex items-center gap-3">
@@ -169,11 +175,6 @@
             </div>
         </div>
 
-        <!-- Related Products -->
-        <div class="mt-xl pt-xl border-t border-outline-variant/30">
-            <h2 class="font-headline-md text-headline-md text-primary mb-lg">Você também pode gostar...</h2>
-            <div id="related-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter"></div>
-        </div>
     </main>
 
     <!-- Toast -->
@@ -296,19 +297,32 @@
             } else {
                 extras.forEach((e, i) => {
                     const label = document.createElement('label');
-                    label.className = 'extra-option flex items-center justify-between p-3 rounded-lg border border-transparent hover:bg-surface-container-low hover:border-outline-variant/30 transition-all cursor-pointer';
+                    label.className = 'extra-option flex items-center justify-between p-3 cursor-pointer transition-all';
                     label.innerHTML = `
                         <input type="checkbox" value="${i}" class="sr-only" />
                         <div class="flex items-center gap-sm flex-grow pointer-events-none">
-                            <div class="extra-check w-5 h-5 rounded border border-outline-variant flex items-center justify-center opacity-0 transition-all shrink-0">
-                                <span class="material-symbols-outlined text-sm">check</span>
+                            <div class="extra-check">
+                                <span class="material-symbols-outlined">check</span>
                             </div>
                             <span class="font-body-md text-body-md text-on-surface">${e.label}</span>
                         </div>
                         <span class="font-body-md text-body-md text-on-surface-variant shrink-0 ml-4">${e.price > 0 ? '+ ' + fmt(e.price) : 'Grátis'}</span>`;
                     label.querySelector('input').addEventListener('change', (ev) => {
-                        if (ev.target.checked) selectedExtras.add(i);
-                        else selectedExtras.delete(i);
+                        if (ev.target.checked) {
+                            selectedExtras.add(i);
+                            label.querySelector('.extra-check').style.borderColor = '#61442f';
+                            label.querySelector('.extra-check').style.backgroundColor = '#61442f';
+                            label.querySelector('.extra-check .material-symbols-outlined').style.color = 'white';
+                            label.style.borderColor = '#61442f';
+                            label.style.backgroundColor = 'rgba(97,68,47,0.06)';
+                        } else {
+                            selectedExtras.delete(i);
+                            label.querySelector('.extra-check').style.borderColor = '#82756d';
+                            label.querySelector('.extra-check').style.backgroundColor = 'white';
+                            label.querySelector('.extra-check .material-symbols-outlined').style.color = 'transparent';
+                            label.style.borderColor = 'transparent';
+                            label.style.backgroundColor = '';
+                        }
                         updateTotal();
                     });
                     extrasEl.appendChild(label);
@@ -316,23 +330,6 @@
             }
 
             updateTotal();
-        }
-
-        function renderRelated(products) {
-            const el = document.getElementById('related-container');
-            if (!products.length) { el.closest('.mt-xl').classList.add('hidden'); return; }
-            el.innerHTML = products.slice(0, 3).map(p => `
-                <a href="detalhes.html?id=${p.id}" class="bg-surface rounded-xl overflow-hidden shadow-md shadow-primary/5 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group flex gap-md items-center p-md">
-                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-surface-container">
-                        <img src="${p.image_url}" alt="${p.name}" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" />
-                    </div>
-                    <div class="flex-grow min-w-0">
-                        <h4 class="font-label-md text-label-md text-on-surface truncate mb-1">${p.name}</h4>
-                        <p class="font-label-sm text-label-sm text-on-surface-variant line-clamp-2 mb-2">${p.description}</p>
-                        <span class="font-label-md text-label-md text-primary">${fmt(p.price)}</span>
-                    </div>
-                    <span class="material-symbols-outlined text-outline shrink-0">chevron_right</span>
-                </a>`).join('');
         }
 
         // ── Carrinho ───────────────────────────────────────
@@ -398,16 +395,6 @@
                 const p = data.product || data;
 
                 renderProduct(p);
-
-                // Carrega relacionados da mesma categoria
-                try {
-                    const relRes = await fetch(`${API}/api/products?limit=4`);
-                    if (relRes.ok) {
-                        const relData = await relRes.json();
-                        const related = (relData.products || []).filter(r => r.id !== p.id);
-                        renderRelated(related);
-                    }
-                } catch (_) { document.getElementById('related-container').closest('.mt-xl').classList.add('hidden'); }
 
                 document.getElementById('page-loading').classList.add('hidden');
                 document.getElementById('page-content').classList.remove('hidden');
