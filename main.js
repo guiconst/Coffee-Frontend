@@ -135,34 +135,41 @@ function autoInjectFavoriteButtons() {
 
 window.addToCart = function(id, name, price, image) {
     let cart = JSON.parse(localStorage.getItem('coffee_cart') || '[]');
-    const existing = cart.find(item => item.id === id);
-    
+    const existing = cart.find(item => item.id === id && !item.size && (!item.extras || item.extras.length === 0));
+
     if (existing) {
-        existing.quantity += 1;
+        existing.qty = (existing.qty || 0) + 1;
+        existing.total = existing.price * existing.qty;
     } else {
-        cart.push({ id, name, price, image, quantity: 1 });
+        cart.push({ id, name, price, image_url: image, qty: 1, size: null, extras: [], total: price });
     }
-    
+
     localStorage.setItem('coffee_cart', JSON.stringify(cart));
     updateCartBadges();
     showToast(`Adicionado: ${name}`);
 };
 
-window.removeFromCart = function(id) {
+window.removeFromCart = function(index) {
     let cart = JSON.parse(localStorage.getItem('coffee_cart') || '[]');
-    cart = cart.filter(item => item.id !== id);
+    cart.splice(index, 1);
     localStorage.setItem('coffee_cart', JSON.stringify(cart));
     updateCartBadges();
     renderCartPage();
 };
 
-window.updateQuantity = function(id, delta) {
+window.updateQuantity = function(index, delta) {
     let cart = JSON.parse(localStorage.getItem('coffee_cart') || '[]');
-    const item = cart.find(i => i.id === id);
+    const item = cart[index];
     if (item) {
-        item.quantity += delta;
-        if (item.quantity <= 0) {
-            cart = cart.filter(i => i.id !== id);
+        const qty = (item.qty || 1) + delta;
+        if (qty <= 0) {
+            cart.splice(index, 1);
+        } else {
+            item.qty = qty;
+            const unitPrice = parseFloat(item.price || 0)
+                + (item.size?.price || 0)
+                + (item.extras || []).reduce((s, e) => s + (e.price || 0), 0);
+            item.total = unitPrice * qty;
         }
         localStorage.setItem('coffee_cart', JSON.stringify(cart));
         updateCartBadges();
@@ -182,9 +189,9 @@ window.finishCheckout = function() {
 
 function updateCartBadges() {
     const cart = JSON.parse(localStorage.getItem('coffee_cart') || '[]');
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const totalItems = cart.reduce((sum, item) => sum + (parseInt(item.qty, 10) || 0), 0);
     const badges = [document.getElementById('cart-badge'), document.getElementById('mobile-cart-badge')];
-    
+
     badges.forEach(badge => {
         if (badge) {
             if (totalItems > 0) {
@@ -278,7 +285,7 @@ function renderCartPage() {
     if (!container) return;
 
     const cart = JSON.parse(localStorage.getItem('coffee_cart') || '[]');
-    let total = 0;
+    let subtotal = 0;
 
     if (cart.length === 0) {
         container.innerHTML = `
@@ -288,35 +295,51 @@ function renderCartPage() {
                 <p class="text-on-surface-variant mb-6">Que tal adicionar um delicioso café?</p>
                 <a href="cardapio.html" class="inline-block bg-primary text-on-primary px-6 py-3 rounded-full hover:opacity-90 transition-opacity">Ver Cardápio</a>
             </div>`;
-        subtotalEl.textContent = "R$ 0,00";
-        totalEl.textContent = "R$ 0,00";
+        if (subtotalEl) subtotalEl.textContent = "R$ 0,00";
+        if (totalEl) totalEl.textContent = "R$ 0,00";
         return;
     }
 
-    container.innerHTML = cart.map(item => {
-        const itemTotal = item.price * item.quantity;
-        total += itemTotal;
-        const imgUrl = item.image || "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=200&h=200";
-        
+    container.innerHTML = cart.map((item, index) => {
+        const qty = parseInt(item.qty, 10) || 1;
+        const basePrice = parseFloat(item.price) || 0;
+        const sizePrice = item.size?.price || 0;
+        const extrasPrice = (item.extras || []).reduce((s, e) => s + (parseFloat(e.price) || 0), 0);
+        const unitPrice = basePrice + sizePrice + extrasPrice;
+        const itemTotal = unitPrice * qty;
+        subtotal += itemTotal;
+
+        const imgUrl = item.image_url || item.image || "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=200&h=200";
+
+        const detailsParts = [];
+        if (item.size?.label) detailsParts.push(item.size.label);
+        if (item.extras && item.extras.length) detailsParts.push(item.extras.map(e => e.label).join(', '));
+        const detailsLine = detailsParts.length
+            ? `<p class="text-on-surface-variant font-label-sm mt-0.5">${detailsParts.join(' • ')}</p>`
+            : '';
+
         return `
             <div class="flex items-center gap-4 bg-surface-container rounded-xl p-4 shadow-sm relative">
-                <img src="${imgUrl}" alt="${item.name}" class="w-24 h-24 object-cover rounded-lg">
-                <div class="flex-grow">
-                    <h3 class="font-headline-md text-primary text-lg">${item.name}</h3>
-                    <p class="text-on-surface-variant font-label-md">${formatPrice(item.price)}</p>
-                    
+                <div class="w-24 h-24 rounded-lg overflow-hidden shrink-0 bg-surface-container-high">
+                    <img src="${imgUrl}" alt="${item.name}" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=200&h=200';">
+                </div>
+                <div class="flex-grow min-w-0">
+                    <h3 class="font-headline-md text-primary text-lg truncate">${item.name}</h3>
+                    <p class="text-on-surface-variant font-label-md">${formatPrice(unitPrice)} / un</p>
+                    ${detailsLine}
+
                     <div class="flex items-center gap-3 mt-2">
-                        <button onclick="updateQuantity('${item.id}', -1)" class="w-8 h-8 rounded-full bg-surface border border-outline-variant flex items-center justify-center hover:bg-surface-variant transition-colors">
+                        <button onclick="updateQuantity(${index}, -1)" class="w-8 h-8 rounded-full bg-surface border border-outline-variant flex items-center justify-center hover:bg-surface-variant transition-colors" aria-label="Diminuir quantidade">
                             <span class="material-symbols-outlined text-sm">remove</span>
                         </button>
-                        <span class="font-bold w-4 text-center">${item.quantity}</span>
-                        <button onclick="updateQuantity('${item.id}', 1)" class="w-8 h-8 rounded-full bg-surface border border-outline-variant flex items-center justify-center hover:bg-surface-variant transition-colors">
+                        <span class="font-bold w-4 text-center">${qty}</span>
+                        <button onclick="updateQuantity(${index}, 1)" class="w-8 h-8 rounded-full bg-surface border border-outline-variant flex items-center justify-center hover:bg-surface-variant transition-colors" aria-label="Aumentar quantidade">
                             <span class="material-symbols-outlined text-sm">add</span>
                         </button>
                     </div>
                 </div>
-                <div class="text-right flex flex-col items-end justify-between h-24">
-                    <button onclick="removeFromCart('${item.id}')" class="text-error hover:opacity-70 p-1" aria-label="Remover">
+                <div class="text-right flex flex-col items-end justify-between h-24 shrink-0">
+                    <button onclick="removeFromCart(${index})" class="text-error hover:opacity-70 p-1" aria-label="Remover">
                         <span class="material-symbols-outlined">delete</span>
                     </button>
                     <span class="font-bold text-primary">${formatPrice(itemTotal)}</span>
@@ -325,8 +348,8 @@ function renderCartPage() {
         `;
     }).join('');
 
-    subtotalEl.textContent = formatPrice(total);
-    totalEl.textContent = formatPrice(total);
+    if (subtotalEl) subtotalEl.textContent = formatPrice(subtotal);
+    if (totalEl) totalEl.textContent = formatPrice(subtotal);
 }
 
 function renderCheckoutPage() {
@@ -339,25 +362,38 @@ function renderCheckoutPage() {
 
     if (cart.length === 0) {
         container.innerHTML = `<p class="text-error font-bold">Carrinho vazio.</p>`;
-        totalEl.textContent = "R$ 0,00";
+        if (totalEl) totalEl.textContent = "R$ 0,00";
         return;
     }
 
     container.innerHTML = cart.map(item => {
-        const itemTotal = item.price * item.quantity;
+        const qty = parseInt(item.qty, 10) || 1;
+        const basePrice = parseFloat(item.price) || 0;
+        const sizePrice = item.size?.price || 0;
+        const extrasPrice = (item.extras || []).reduce((s, e) => s + (parseFloat(e.price) || 0), 0);
+        const itemTotal = (basePrice + sizePrice + extrasPrice) * qty;
         total += itemTotal;
+        const detailsParts = [];
+        if (item.size?.label) detailsParts.push(item.size.label);
+        if (item.extras && item.extras.length) detailsParts.push(item.extras.map(e => e.label).join(', '));
+        const detailsLine = detailsParts.length
+            ? `<div class="text-xs text-on-surface-variant/80 pl-7">${detailsParts.join(' • ')}</div>`
+            : '';
         return `
-            <div class="flex justify-between items-center py-2 border-b border-surface-variant last:border-0">
-                <div class="flex gap-2 items-center">
-                    <span class="bg-primary-container text-on-primary-container px-2 py-0.5 rounded text-xs font-bold">${item.quantity}x</span>
-                    <span class="font-medium">${item.name}</span>
+            <div class="py-2 border-b border-surface-variant last:border-0">
+                <div class="flex justify-between items-center">
+                    <div class="flex gap-2 items-center">
+                        <span class="bg-primary-container text-on-primary-container px-2 py-0.5 rounded text-xs font-bold">${qty}x</span>
+                        <span class="font-medium">${item.name}</span>
+                    </div>
+                    <span>${formatPrice(itemTotal)}</span>
                 </div>
-                <span>${formatPrice(itemTotal)}</span>
+                ${detailsLine}
             </div>
         `;
     }).join('');
 
-    totalEl.textContent = formatPrice(total);
+    if (totalEl) totalEl.textContent = formatPrice(total);
 }
 
 function showToast(message) {
