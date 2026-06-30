@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="pt-BR">
 
@@ -215,69 +215,73 @@
                 <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Descubra nossa seleção de bebidas
                     artesanais, preparadas com perfeição.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
-                <!-- Card 1: Espresso -->
-                <div
-                    class="bg-surface rounded-[24px] overflow-hidden flex flex-col h-full transition-all duration-[400ms] ease-in-out hover:-translate-y-1 hover:shadow-[0_15px_35px_rgba(78,52,46,0.1)] shadow-[0_10px_30px_rgba(78,52,46,0.08)]">
-                    <div class="h-48 relative overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            data-alt="A minimalist, top-down shot of a rich, dark espresso shot in a small, elegant ceramic demitasse cup, resting on a clean beige saucer. A delicate crema sits perfectly on top of the coffee. The lighting is soft and natural, emphasizing the deep brown textures of the coffee against the warm, creamy background. Modern artisanal aesthetic."
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpT5cSBs9VqrTxzp1eBtZzTo1uPL1W4UVPmNLyr2tNk277IXGTcojhgKkgsr6POFgSvV79lmRRASIqEQSu1Qd-7TSUKgMvjMFzKNie9EBCIOsIGxHqUrZp1pXrKh31-srQOPLifgTURCTypPSHghvU-wQ27MPzYV-lbkcqCRkltjTyuTmLjt9Il0aFTIFGojgToCBqyqOjCmg2zqnhw4-QAaqzb88WhRZp2Mai8gmdVqmmTitiF9fz7_1vUL1eL342KVExAp7p6Na_" />
-                    </div>
-                    <div class="p-md flex flex-col flex-grow">
-                        <div class="flex justify-between items-start mb-sm">
-                            <h3 class="font-headline-md text-headline-md text-on-surface">Espresso</h3>
-                            <span class="font-label-md text-label-md text-primary font-semibold">R$ 9,00</span>
-                        </div>
-                        <p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-md">Intenso, encorpado
-                            e com uma crema perfeita. A essência pura do café.</p>
-                        <a href="detalhes.html" class="mt-auto w-full bg-surface-container-high text-primary font-label-md text-label-md py-sm rounded-xl hover:bg-primary-container hover:text-on-primary-container transition-colors inline-block text-center">
-                            Detalhes
-                        </a>
+            <div id="featured-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+                <!-- Skeleton loaders -->
+                <div class="bg-surface rounded-[24px] overflow-hidden shadow-[0_10px_30px_rgba(78,52,46,0.08)] animate-pulse">
+                    <div class="h-48 bg-surface-container-high"></div>
+                    <div class="p-md space-y-sm">
+                        <div class="h-5 bg-surface-container-high rounded w-2/3"></div>
+                        <div class="h-4 bg-surface-container-high rounded w-full"></div>
+                        <div class="h-4 bg-surface-container-high rounded w-4/5"></div>
+                        <div class="h-10 bg-surface-container-high rounded-xl mt-md"></div>
                     </div>
                 </div>
-                <!-- Card 2: Latte -->
-                <div
-                    class="bg-surface rounded-[24px] overflow-hidden flex flex-col h-full transition-all duration-[400ms] ease-in-out hover:-translate-y-1 hover:shadow-[0_15px_35px_rgba(78,52,46,0.1)] shadow-[0_10px_30px_rgba(78,52,46,0.08)]">
-                    <div class="h-48 relative overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            data-alt="A beautifully crafted café latte in a clear glass mug, showing distinct layers of espresso and steamed milk, topped with delicate latte art (a rosetta pattern). Set against a minimalist beige background with warm, diffused lighting. The aesthetic is clean, premium, and appetizing."
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBRasoeZcwQHPSRUvEJ3kp0Q5qJqzGDg2NcxRbvikc05dys4XRDsigl2AeON33wJXxHA5_khaa9CYP8aZgR0GnfCvOaHgl2ro8Qtn7M8QKEoOMTmCT48WLz-PJKUnPqxw2DOhx0_jn1_KNyrBP2U_n7XdzbeuVxqQ4Bxzd51CON-gPKR8AI_gxirQm-V8hZYvqvrfYIw09pBALkGsO8R-czCdYAu5TiEOk7y8GFozEr5_tLL1kdlU8wxMWWa-_XlynlNYphS28Zn-x" />
-                    </div>
-                    <div class="p-md flex flex-col flex-grow">
-                        <div class="flex justify-between items-start mb-sm">
-                            <h3 class="font-headline-md text-headline-md text-on-surface">Latte</h3>
-                            <span class="font-label-md text-label-md text-primary font-semibold">R$ 14,00</span>
-                        </div>
-                        <p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-md">Suave e cremoso,
-                            com uma dose de espresso e leite vaporizado sedoso.</p>
-                        <a href="detalhes.html" class="mt-auto w-full bg-surface-container-high text-primary font-label-md text-label-md py-sm rounded-xl hover:bg-primary-container hover:text-on-primary-container transition-colors inline-block text-center">
-                            Detalhes
-                        </a>
+                <div class="bg-surface rounded-[24px] overflow-hidden shadow-[0_10px_30px_rgba(78,52,46,0.08)] animate-pulse">
+                    <div class="h-48 bg-surface-container-high"></div>
+                    <div class="p-md space-y-sm">
+                        <div class="h-5 bg-surface-container-high rounded w-2/3"></div>
+                        <div class="h-4 bg-surface-container-high rounded w-full"></div>
+                        <div class="h-4 bg-surface-container-high rounded w-4/5"></div>
+                        <div class="h-10 bg-surface-container-high rounded-xl mt-md"></div>
                     </div>
                 </div>
-                <!-- Card 3: Cappuccino -->
-                <div
-                    class="bg-surface rounded-[24px] overflow-hidden flex flex-col h-full transition-all duration-[400ms] ease-in-out hover:-translate-y-1 hover:shadow-[0_15px_35px_rgba(78,52,46,0.1)] shadow-[0_10px_30px_rgba(78,52,46,0.08)]">
-                    <div class="h-48 relative overflow-hidden">
-                        <img class="w-full h-full object-cover"
-                            data-alt="A classic cappuccino in a wide, shallow ceramic cup, featuring a thick, frothy layer of milk foam dusted lightly with cocoa powder. The cup sits on a saucer on a light wood surface. The lighting is warm and natural, creating a cozy, artisanal coffee shop vibe. Minimalist and refined."
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTKcJuUas3tLObwu9-MzDpKA8cwYm17FklIEdo6bRFSFC66Sa4MvXY1n4wpAiblA0Xzku6qqn3r1qagYYcBldkdqYGVUcZ8ng3QZ1SAloz9CSPP4A0krO6l0CpfdL4anhAAOiSB7PBWmeoIPAHwPa9u20Jz_TVoLYSziqjVxJplZEMfOgHTcojRMcKoRDfbIXBH36sXdCi6V7BqNqVfhp1ylnxvjivV3n_ZFaCuOKyxMYq8C6wQ9t88gbDluCVMlIn5vlpbW_uwgni" />
-                    </div>
-                    <div class="p-md flex flex-col flex-grow">
-                        <div class="flex justify-between items-start mb-sm">
-                            <h3 class="font-headline-md text-headline-md text-on-surface">Cappuccino</h3>
-                            <span class="font-label-md text-label-md text-primary font-semibold">R$ 16,00</span>
-                        </div>
-                        <p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-md">Equilíbrio perfeito
-                            entre espresso, leite vaporizado e uma rica espuma de leite.</p>
-                        <a href="detalhes.html" class="mt-auto w-full bg-surface-container-high text-primary font-label-md text-label-md py-sm rounded-xl hover:bg-primary-container hover:text-on-primary-container transition-colors inline-block text-center">
-                            Detalhes
-                        </a>
+                <div class="bg-surface rounded-[24px] overflow-hidden shadow-[0_10px_30px_rgba(78,52,46,0.08)] animate-pulse">
+                    <div class="h-48 bg-surface-container-high"></div>
+                    <div class="p-md space-y-sm">
+                        <div class="h-5 bg-surface-container-high rounded w-2/3"></div>
+                        <div class="h-4 bg-surface-container-high rounded w-full"></div>
+                        <div class="h-4 bg-surface-container-high rounded w-4/5"></div>
+                        <div class="h-10 bg-surface-container-high rounded-xl mt-md"></div>
                     </div>
                 </div>
             </div>
         </section>
+        <script>
+        (async function loadFeatured() {
+            const API = 'https://coffee-backend-eight.vercel.app';
+            const grid = document.getElementById('featured-grid');
+            try {
+                const res = await fetch(`${API}/api/products?limit=3`);
+                if (!res.ok) throw new Error();
+                const data = await res.json();
+                const products = (data.products || []).slice(0, 3);
+                if (!products.length) throw new Error();
+                grid.innerHTML = products.map(p => {
+                    const price = parseFloat(p.is_promotion && p.promo_price ? p.promo_price : p.price);
+                    const priceStr = `R$ ${price.toFixed(2).replace('.', ',')}`;
+                    return `
+                    <div class="bg-surface rounded-[24px] overflow-hidden flex flex-col h-full transition-all duration-[400ms] ease-in-out hover:-translate-y-1 hover:shadow-[0_15px_35px_rgba(78,52,46,0.1)] shadow-[0_10px_30px_rgba(78,52,46,0.08)]">
+                        <div class="h-48 relative overflow-hidden">
+                            <img class="w-full h-full object-cover" src="${p.image_url || ''}" alt="${p.name}" loading="lazy" />
+                            ${p.is_promotion ? '<span class="absolute top-3 left-3 bg-error text-on-error font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-wider">Promoção</span>' : ''}
+                        </div>
+                        <div class="p-md flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-sm">
+                                <h3 class="font-headline-md text-headline-md text-on-surface">${p.name}</h3>
+                                <span class="font-label-md text-label-md text-primary font-semibold shrink-0 ml-2">${priceStr}</span>
+                            </div>
+                            <p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-md line-clamp-2">${p.description || ''}</p>
+                            <a href="detalhes.html?id=${p.id}" class="mt-auto w-full bg-surface-container-high text-primary font-label-md text-label-md py-sm rounded-xl hover:bg-primary-container hover:text-on-primary-container transition-colors inline-block text-center">
+                                Detalhes
+                            </a>
+                        </div>
+                    </div>`;
+                }).join('');
+            } catch (_) {
+                grid.innerHTML = `<div class="col-span-3 text-center py-lg text-on-surface-variant font-body-md">Não foi possível carregar os produtos. <a href="cardapio.html" class="text-primary underline">Ver Cardápio</a></div>`;
+            }
+        })();
+        </script>
     </main>
     <!-- Footer (Shared Component) -->
     <footer
