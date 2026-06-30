@@ -105,10 +105,11 @@
     <!-- Main Content -->
     <main id="page-content" class="hidden flex-grow w-full max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
 
-        <!-- Breadcrumb -->
-        <div class="mb-lg">
-            <a class="inline-flex items-center text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md group" href="cardapio.html">
-                <span class="material-symbols-outlined mr-xs text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+        <!-- Back Button -->
+        <div class="mb-lg flex">
+            <a href="cardapio.html"
+               class="group inline-flex items-center gap-xs bg-surface border border-outline-variant/60 text-on-surface-variant font-label-md text-label-md pl-3 pr-4 py-2 rounded-full hover:border-primary hover:text-primary hover:bg-primary-container/10 transition-all duration-300 shadow-sm">
+                <span class="material-symbols-outlined text-lg group-hover:-translate-x-0.5 transition-transform">arrow_back</span>
                 Voltar ao Cardápio
             </a>
         </div>
@@ -398,7 +399,7 @@
 
                 document.getElementById('page-loading').classList.add('hidden');
                 document.getElementById('page-content').classList.remove('hidden');
-                document.getElementById('page-content').classList.add('flex');
+                document.getElementById('page-content').classList.add('flex', 'flex-col');
             } catch (err) {
                 showError();
             }
