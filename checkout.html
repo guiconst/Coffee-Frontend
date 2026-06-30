@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="pt-BR">
 
@@ -259,12 +259,21 @@
                             document.getElementById('checkout-error').classList.add('hidden');
 
                             try {
-                                const items = cart.map(i => ({
-                                    product_id: i.id,
-                                    name: i.name,
-                                    price: i.price,
-                                    quantity: i.quantity
-                                }));
+                                const items = cart.map(i => {
+                                    const qty = parseInt(i.qty, 10) || 1;
+                                    const sizePrice = i.size?.price || 0;
+                                    const extrasPrice = (i.extras || []).reduce((s, e) => s + (parseFloat(e.price) || 0), 0);
+                                    const unitPrice = (parseFloat(i.price) || 0) + sizePrice + extrasPrice;
+                                    const nameParts = [i.name];
+                                    if (i.size?.label) nameParts.push(i.size.label);
+                                    if (i.extras && i.extras.length) nameParts.push(i.extras.map(e => e.label).join(', '));
+                                    return {
+                                        product_id: i.id,
+                                        name: nameParts.join(' - '),
+                                        price: unitPrice,
+                                        quantity: qty
+                                    };
+                                });
 
                                 const res = await fetch(`${API}/api/orders`, {
                                     method: 'POST',
