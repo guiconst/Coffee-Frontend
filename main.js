@@ -1,3 +1,43 @@
+const COFFEE_API = 'https://coffee-backend-eight.vercel.app';
+
+/**
+ * Retorna uma sessão válida, fazendo refresh automático se o token estiver perto de expirar.
+ * Retorna null se o usuário não estiver logado ou a sessão não puder ser renovada.
+ */
+async function getValidSession() {
+    let session = JSON.parse(localStorage.getItem('coffee_session') || 'null');
+    if (!session) return null;
+
+    const expiresAt = session.expires_at; // unix timestamp em segundos
+    const nowSec = Math.floor(Date.now() / 1000);
+    const isExpired = expiresAt && (expiresAt - nowSec) < 60;
+
+    if (isExpired && session.refresh_token) {
+        try {
+            const res = await fetch(`${COFFEE_API}/api/auth/refresh`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ refresh_token: session.refresh_token })
+            });
+            if (res.ok) {
+                const data = await res.json();
+                session = data.session;
+                localStorage.setItem('coffee_session', JSON.stringify(session));
+                if (data.user) localStorage.setItem('coffee_user', JSON.stringify(data.user));
+            } else {
+                localStorage.removeItem('coffee_session');
+                localStorage.removeItem('coffee_user');
+                return null;
+            }
+        } catch (_) {
+            return null;
+        }
+    }
+
+    return session;
+}
+window.getValidSession = getValidSession;
+
 document.addEventListener('DOMContentLoaded', () => {
     // 0. Ícone de perfil: redireciona para perfil.html se logado, login.html se não
     const _session = JSON.parse(localStorage.getItem('coffee_session') || 'null');
