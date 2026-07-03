@@ -176,15 +176,13 @@
                         <span class="material-symbols-outlined">location_on</span> Endereço de Entrega
                     </h2>
                     <form id="address-form" class="space-y-4">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <input id="addr-cep" type="text" placeholder="CEP" class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-fixed focus:ring-1 focus:ring-primary-fixed outline-none" required>
-                            <input id="addr-street" type="text" placeholder="Rua" class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-fixed outline-none" required>
-                        </div>
+                        <input id="addr-street" type="text" placeholder="Rua" class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-fixed focus:ring-1 focus:ring-primary-fixed outline-none" required>
                         <div class="grid grid-cols-3 gap-4">
-                            <input id="addr-number" type="text" placeholder="Número" class="col-span-1 bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-fixed outline-none" required>
-                            <input id="addr-complement" type="text" placeholder="Complemento" class="col-span-2 bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-fixed outline-none">
+                            <input id="addr-number" type="text" placeholder="Número" class="col-span-1 bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-fixed focus:ring-1 focus:ring-primary-fixed outline-none" required>
+                            <input id="addr-complement" type="text" placeholder="Complemento (opcional)" class="col-span-2 bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-fixed focus:ring-1 focus:ring-primary-fixed outline-none">
                         </div>
-                        <input id="addr-city" type="text" placeholder="Cidade" class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-fixed outline-none" required>
+                        <input id="addr-neighborhood" type="text" placeholder="Bairro" class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-fixed focus:ring-1 focus:ring-primary-fixed outline-none" required>
+                        <input id="addr-city" type="text" placeholder="Cidade" class="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 focus:border-primary-fixed focus:ring-1 focus:ring-primary-fixed outline-none" required>
                     </form>
                 </div>
                 <!-- Payment -->
@@ -192,14 +190,17 @@
                     <h2 class="font-headline-md text-primary mb-6 flex items-center gap-2">
                         <span class="material-symbols-outlined">payments</span> Pagamento
                     </h2>
-                    <div class="space-y-4">
+                    <div class="space-y-4" id="payment-options">
                         <label class="flex items-center gap-3 p-4 border border-primary bg-primary/5 rounded-lg cursor-pointer">
-                            <input type="radio" name="payment" checked class="text-primary focus:ring-primary h-5 w-5">
-                            <span class="font-label-md text-on-surface">Cartão de Crédito</span>
+                            <input type="radio" name="payment" value="pix" checked class="text-primary focus:ring-primary h-5 w-5">
+                            <span class="font-label-md text-on-surface flex items-center gap-2">
+                                PIX
+                                <span class="bg-primary text-on-primary text-xs font-bold px-2 py-0.5 rounded-full">5% de desconto</span>
+                            </span>
                         </label>
                         <label class="flex items-center gap-3 p-4 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface transition-colors">
-                            <input type="radio" name="payment" class="text-primary focus:ring-primary h-5 w-5">
-                            <span class="font-label-md text-on-surface">PIX (5% de desconto)</span>
+                            <input type="radio" name="payment" value="credit_card" class="text-primary focus:ring-primary h-5 w-5">
+                            <span class="font-label-md text-on-surface">Cartão de Crédito/Débito</span>
                         </label>
                     </div>
                 </div>
@@ -212,9 +213,24 @@
                         <!-- Injected by JS -->
                     </div>
                     <div class="h-px bg-surface-variant my-4"></div>
-                    <div class="flex justify-between font-headline-md text-primary mb-6">
-                        <span>Total Pago</span>
-                        <span id="checkout-total">R$ 0,00</span>
+                    <div class="space-y-2 mb-4 font-body-md text-on-surface-variant">
+                        <div class="flex justify-between">
+                            <span>Subtotal</span>
+                            <span id="checkout-subtotal" class="font-semibold text-on-surface">R$ 0,00</span>
+                        </div>
+                        <div id="checkout-discount-row" class="hidden flex justify-between text-primary font-semibold">
+                            <span>Desconto PIX (5%)</span>
+                            <span id="checkout-discount">- R$ 0,00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Taxa de Entrega</span>
+                            <span class="font-semibold text-on-surface">Grátis</span>
+                        </div>
+                    </div>
+                    <div class="h-px bg-surface-variant my-4"></div>
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="font-headline-md text-headline-md text-primary">Total a Pagar</span>
+                        <span id="checkout-total" class="font-display text-3xl md:text-4xl font-bold text-primary">R$ 0,00</span>
                     </div>
                     <div id="checkout-error" class="hidden bg-error-container text-on-error-container text-sm px-4 py-3 rounded-lg mb-3"></div>
                     <button id="btn-confirm" onclick="handleCheckout()" class="w-full bg-primary text-on-primary px-6 py-4 rounded-full font-label-md hover:opacity-90 active:scale-95 transition-all">
@@ -222,6 +238,25 @@
                     </button>
                     <script>
                         const API = 'https://coffee-backend-eight.vercel.app';
+
+                        // Highlight selected payment option
+                        document.querySelectorAll('input[name="payment"]').forEach(radio => {
+                            radio.addEventListener('change', () => {
+                                document.querySelectorAll('#payment-options label').forEach(label => {
+                                    label.classList.remove('border-primary', 'bg-primary/5');
+                                    label.classList.add('border-outline-variant');
+                                });
+                                const activeLabel = radio.closest('label');
+                                activeLabel.classList.add('border-primary', 'bg-primary/5');
+                                activeLabel.classList.remove('border-outline-variant');
+
+                                // Recalculate total with or without PIX discount
+                                if (typeof updateCheckoutTotalDisplay === 'function') {
+                                    const subtotal = typeof getCartSubtotal === 'function' ? getCartSubtotal() : 0;
+                                    updateCheckoutTotalDisplay(subtotal);
+                                }
+                            });
+                        });
 
                         async function handleCheckout() {
                             const cart = JSON.parse(localStorage.getItem('coffee_cart') || '[]');
@@ -237,28 +272,41 @@
                                 return;
                             }
 
-                            const street = document.getElementById('addr-street').value;
-                            const number = document.getElementById('addr-number').value;
-                            const city = document.getElementById('addr-city').value;
-                            const cep = document.getElementById('addr-cep').value;
-                            if (!street || !number || !city || !cep) {
-                                document.getElementById('checkout-error').textContent = 'Preencha o endereço completo.';
-                                document.getElementById('checkout-error').classList.remove('hidden');
+                            const street = document.getElementById('addr-street').value.trim();
+                            const number = document.getElementById('addr-number').value.trim();
+                            const complement = document.getElementById('addr-complement').value.trim();
+                            const neighborhood = document.getElementById('addr-neighborhood').value.trim();
+                            const city = document.getElementById('addr-city').value.trim();
+
+                            if (!street || !number || !neighborhood || !city) {
+                                const errEl = document.getElementById('checkout-error');
+                                errEl.textContent = 'Preencha Rua, Número, Bairro e Cidade.';
+                                errEl.classList.remove('hidden');
                                 return;
                             }
 
-                            const paymentRadio = document.querySelector('input[name="payment"]:checked');
-                            const paymentMap = { 0: 'credit_card', 1: 'pix' };
-                            const radios = document.querySelectorAll('input[name="payment"]');
-                            let paymentMethod = 'credit_card';
-                            radios.forEach((r, i) => { if (r.checked) paymentMethod = paymentMap[i] || 'credit_card'; });
+                            const paymentMethod = document.querySelector('input[name="payment"]:checked')?.value || 'pix';
 
                             const btn = document.getElementById('btn-confirm');
-                            btn.textContent = 'Processando...';
+                            btn.innerHTML = '<span class="animate-spin inline-block mr-2">⏳</span> Processando...';
                             btn.disabled = true;
                             document.getElementById('checkout-error').classList.add('hidden');
 
                             try {
+                                // 1. Salvar endereço no Supabase e obter address_id
+                                const addrRes = await fetch(`${API}/api/auth/addresses`, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'Authorization': `Bearer ${session.access_token}`
+                                    },
+                                    body: JSON.stringify({ street, number, complement, neighborhood, city, label: 'Entrega', is_default: false })
+                                });
+                                const addrData = await addrRes.json();
+                                if (!addrRes.ok) throw new Error(addrData.error || 'Erro ao salvar endereço');
+                                const address_id = addrData.address?.id;
+
+                                // 2. Montar itens com preço unitário correto
                                 const items = cart.map(i => {
                                     const qty = parseInt(i.qty, 10) || 1;
                                     const sizePrice = i.size?.price || 0;
@@ -267,21 +315,22 @@
                                     const nameParts = [i.name];
                                     if (i.size?.label) nameParts.push(i.size.label);
                                     if (i.extras && i.extras.length) nameParts.push(i.extras.map(e => e.label).join(', '));
-                                    return {
-                                        product_id: i.id,
-                                        name: nameParts.join(' - '),
-                                        price: unitPrice,
-                                        quantity: qty
-                                    };
+                                    return { product_id: i.id, name: nameParts.join(' - '), price: unitPrice, quantity: qty };
                                 });
 
+                                // 3. Calcular total com desconto PIX se aplicável
+                                const subtotal = items.reduce((s, i) => s + i.price * i.quantity, 0);
+                                const discount = paymentMethod === 'pix' ? subtotal * 0.05 : 0;
+                                const total_amount = parseFloat((subtotal - discount).toFixed(2));
+
+                                // 4. Criar pedido
                                 const res = await fetch(`${API}/api/orders`, {
                                     method: 'POST',
                                     headers: {
                                         'Content-Type': 'application/json',
                                         'Authorization': `Bearer ${session.access_token}`
                                     },
-                                    body: JSON.stringify({ items, payment_method: paymentMethod })
+                                    body: JSON.stringify({ items, payment_method: paymentMethod, address_id, total_amount })
                                 });
                                 const data = await res.json();
                                 if (!res.ok) throw new Error(data.error || 'Erro ao criar pedido');
@@ -290,9 +339,10 @@
                                 showToast('Pedido confirmado! Obrigado 🎉');
                                 setTimeout(() => window.location.href = 'index.html', 2000);
                             } catch (err) {
-                                document.getElementById('checkout-error').textContent = err.message;
-                                document.getElementById('checkout-error').classList.remove('hidden');
-                                btn.textContent = 'Confirmar e Pagar';
+                                const errEl = document.getElementById('checkout-error');
+                                errEl.textContent = err.message;
+                                errEl.classList.remove('hidden');
+                                btn.innerHTML = 'Confirmar e Pagar';
                                 btn.disabled = false;
                             }
                         }
