@@ -352,27 +352,44 @@ function renderCartPage() {
     if (totalEl) totalEl.textContent = formatPrice(subtotal);
 }
 
+function getCartSubtotal() {
+    const cart = JSON.parse(localStorage.getItem('coffee_cart') || '[]');
+    return cart.reduce((sum, item) => {
+        const qty = parseInt(item.qty, 10) || 1;
+        const basePrice = parseFloat(item.price) || 0;
+        const sizePrice = item.size?.price || 0;
+        const extrasPrice = (item.extras || []).reduce((s, e) => s + (parseFloat(e.price) || 0), 0);
+        return sum + (basePrice + sizePrice + extrasPrice) * qty;
+    }, 0);
+}
+window.getCartSubtotal = getCartSubtotal;
+
 function renderCheckoutPage() {
     const container = document.getElementById('checkout-items');
+    const subtotalEl = document.getElementById('checkout-subtotal');
     const totalEl = document.getElementById('checkout-total');
+    const discountRow = document.getElementById('checkout-discount-row');
+    const discountEl = document.getElementById('checkout-discount');
     if (!container) return;
 
     const cart = JSON.parse(localStorage.getItem('coffee_cart') || '[]');
-    let total = 0;
 
     if (cart.length === 0) {
         container.innerHTML = `<p class="text-error font-bold">Carrinho vazio.</p>`;
+        if (subtotalEl) subtotalEl.textContent = "R$ 0,00";
         if (totalEl) totalEl.textContent = "R$ 0,00";
+        if (discountRow) discountRow.classList.add('hidden');
         return;
     }
 
+    let subtotal = 0;
     container.innerHTML = cart.map(item => {
         const qty = parseInt(item.qty, 10) || 1;
         const basePrice = parseFloat(item.price) || 0;
         const sizePrice = item.size?.price || 0;
         const extrasPrice = (item.extras || []).reduce((s, e) => s + (parseFloat(e.price) || 0), 0);
         const itemTotal = (basePrice + sizePrice + extrasPrice) * qty;
-        total += itemTotal;
+        subtotal += itemTotal;
         const detailsParts = [];
         if (item.size?.label) detailsParts.push(item.size.label);
         if (item.extras && item.extras.length) detailsParts.push(item.extras.map(e => e.label).join(', '));
@@ -393,8 +410,31 @@ function renderCheckoutPage() {
         `;
     }).join('');
 
-    if (totalEl) totalEl.textContent = formatPrice(total);
+    if (subtotalEl) subtotalEl.textContent = formatPrice(subtotal);
+    updateCheckoutTotalDisplay(subtotal);
 }
+
+function updateCheckoutTotalDisplay(subtotal) {
+    const totalEl = document.getElementById('checkout-total');
+    const discountRow = document.getElementById('checkout-discount-row');
+    const discountEl = document.getElementById('checkout-discount');
+    if (!totalEl) return;
+
+    const paymentRadio = document.querySelector('input[name="payment"]:checked');
+    const isPix = paymentRadio && paymentRadio.value === 'pix';
+
+    if (isPix) {
+        const discount = subtotal * 0.05;
+        const total = subtotal - discount;
+        if (discountRow) discountRow.classList.remove('hidden');
+        if (discountEl) discountEl.textContent = `- ${formatPrice(discount)}`;
+        totalEl.textContent = formatPrice(total);
+    } else {
+        if (discountRow) discountRow.classList.add('hidden');
+        totalEl.textContent = formatPrice(subtotal);
+    }
+}
+window.updateCheckoutTotalDisplay = updateCheckoutTotalDisplay;
 
 function showToast(message) {
     let toast = document.getElementById('global-toast');
