@@ -265,7 +265,9 @@
                                 return;
                             }
 
-                            const session = JSON.parse(localStorage.getItem('coffee_session') || 'null');
+                            const session = await (typeof getValidSession === 'function'
+                                ? getValidSession()
+                                : Promise.resolve(JSON.parse(localStorage.getItem('coffee_session') || 'null')));
                             if (!session) {
                                 showToast('Faça login para finalizar o pedido.');
                                 setTimeout(() => window.location.href = 'login.html', 1200);
