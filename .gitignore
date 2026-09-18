@@ -1,0 +1,6 @@
+# Conteúdo sugerido para o .gitignore na raiz do Coffee-Frontend
+
+node_modules/
+www/
+android/
+.DS_Store

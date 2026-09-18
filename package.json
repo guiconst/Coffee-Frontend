@@ -1,0 +1,16 @@
+{
+  "name": "constantino-coffee-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Empacotamento Android (Capacitor) do site Constantino Coffee",
+  "scripts": {
+    "build": "rm -rf www && mkdir -p www && cp *.html www/ && cp api.js main.js www/"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/core": "^8.5.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.2"
+  }
+}
