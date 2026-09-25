@@ -1,10 +1,10 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Cardapio from './pages/Cardapio'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="bg-background text-on-background antialiased min-h-screen flex flex-col">
         <Navbar />
         <Routes>
@@ -12,6 +12,6 @@ export default function App() {
           <Route path="/cardapio" element={<Cardapio />} />
         </Routes>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
