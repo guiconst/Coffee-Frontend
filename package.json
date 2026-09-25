@@ -1,16 +1,30 @@
 {
-  "name": "constantino-coffee-app",
-  "version": "1.0.0",
+  "name": "coffee-react",
   "private": true,
-  "description": "Empacotamento Android (Capacitor) do site Constantino Coffee",
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "build": "rm -rf www && mkdir -p www && cp *.html www/ && cp api.js main.js www/"
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "oxlint",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.2",
-    "@capacitor/core": "^8.5.2"
+    "@capacitor/core": "^8.5.2",
+    "@supabase/supabase-js": "^2.117.2",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.4"
   },
   "devDependencies": {
-    "@capacitor/cli": "^8.5.2"
+    "@capacitor/cli": "^8.5.2",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "oxlint": "^1.81.0",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.0"
   }
 }

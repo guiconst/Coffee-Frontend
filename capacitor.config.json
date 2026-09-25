@@ -1,5 +1,5 @@
 {
   "appId": "br.com.constantino.coffee",
   "appName": "Constantino Coffee",
-  "webDir": "www"
+  "webDir": "dist"
 }
