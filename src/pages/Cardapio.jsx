@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
 
 function fmt(val) {
@@ -15,8 +16,8 @@ function ProductCard({ p }) {
   const badges = (p.tags || []).filter((t) => TAG_MAP[t])
 
   return (
-    <a
-      href={`/detalhes/${p.id}`}
+    <Link
+      to={`/detalhes/${p.id}`}
       className="bg-surface rounded-xl flex flex-col group hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-primary/10 relative h-full"
     >
       <div className="w-full h-56 rounded-t-xl overflow-hidden shrink-0 relative">
@@ -58,7 +59,7 @@ function ProductCard({ p }) {
           Ver Detalhes
         </div>
       </div>
-    </a>
+    </Link>
   )
 }
 
@@ -85,6 +86,24 @@ export default function Cardapio() {
     }
 
     buscarDados()
+
+    // Realtime: o cardápio acompanha mudanças feitas no Admin
+    const channel = supabase
+      .channel('cardapio-products')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'products' }, (payload) => {
+        if (payload.eventType === 'INSERT') {
+          setProducts((prev) => (prev.some((p) => p.id === payload.new.id) ? prev : [...prev, payload.new]))
+        } else if (payload.eventType === 'UPDATE') {
+          setProducts((prev) => prev.map((p) => (p.id === payload.new.id ? payload.new : p)))
+        } else if (payload.eventType === 'DELETE') {
+          setProducts((prev) => prev.filter((p) => p.id !== payload.old.id))
+        }
+      })
+      .subscribe()
+
+    return () => {
+      supabase.removeChannel(channel)
+    }
   }, [])
 
   return (
