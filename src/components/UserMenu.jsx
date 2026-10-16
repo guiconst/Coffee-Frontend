@@ -18,7 +18,7 @@ export default function UserMenu() {
       )}
       <div className="hidden md:block leading-tight">
         <p className="font-label-md text-label-md font-semibold text-on-surface">
-          {full_name ?? 'Usuário'}
+          {full_name ?? user.email?.split('@')[0] ?? 'Usuário'}
         </p>
         <p className="font-body-md text-label-sm text-on-surface-variant">{user.email}</p>
       </div>

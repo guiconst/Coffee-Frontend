@@ -31,13 +31,23 @@ export function AuthProvider({ children }) {
     if (error) console.error('Erro no login com Google:', error.message)
   }
 
+  const entrar = (email, password) =>
+    supabase.auth.signInWithPassword({ email, password })
+
+  const cadastrar = (email, password) =>
+    supabase.auth.signUp({
+      email,
+      password,
+      options: { emailRedirectTo: window.location.origin },
+    })
+
   const sair = async () => {
     const { error } = await supabase.auth.signOut()
     if (error) console.error('Erro ao sair:', error.message)
   }
 
   return (
-    <AuthContext.Provider value={{ user, loading, loginComGoogle, sair }}>
+    <AuthContext.Provider value={{ user, loading, loginComGoogle, entrar, cadastrar, sair }}>
       {children}
     </AuthContext.Provider>
   )
