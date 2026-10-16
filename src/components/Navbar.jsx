@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
+import UserMenu from './UserMenu'
 
 export default function Navbar() {
   const { pathname } = useLocation()
@@ -20,6 +21,7 @@ export default function Navbar() {
           <Link className={cls('/admin')} to="/admin">
             Admin
           </Link>
+          <UserMenu />
         </nav>
       </div>
     </header>

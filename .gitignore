@@ -1,6 +1,10 @@
-# Conteúdo sugerido para o .gitignore na raiz do Coffee-Frontend
-
 node_modules/
+dist/
 www/
 android/
 .DS_Store
+
+# Variáveis de ambiente (nunca commitar)
+.env
+.env.*
+!.env.example
